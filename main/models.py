@@ -23,3 +23,13 @@ class ConfirmedArtists(models.Model):
 
     def __str__(self):
         return self.confirmedArtists_name
+
+
+class Pricing(models.Model):
+    pricing_price = models.CharField(max_length=10)
+    pricing_type = models.CharField(max_length=200)
+    pricing_details = models.TextField()
+    pricing_image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.pricing_price
