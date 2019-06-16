@@ -12,3 +12,14 @@ class Carousel(models.Model):
 
     def __str__(self):
         return self.carousel_title
+
+
+class ConfirmedArtists(models.Model):
+    confirmedArtists_name = models.CharField(max_length=200)
+    confirmedArtists_description = models.TextField()
+    confirmedArtists_published = models.DateTimeField('date published')
+    confirmedArtists_active = models.BooleanField()
+    confirmedArtists_image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.confirmedArtists_name
