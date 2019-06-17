@@ -26,9 +26,11 @@ class ConfirmedArtists(models.Model):
 
 
 class Pricing(models.Model):
-    pricing_price = models.CharField(max_length=10)
+    pricing_price = models.CharField(max_length=50)
     pricing_type = models.CharField(max_length=200)
     pricing_details = models.TextField()
+    pricing_published = models.DateTimeField('date published')
+    pricing_active = models.BooleanField()
     pricing_image = models.ImageField(upload_to='images/')
 
     def __str__(self):
