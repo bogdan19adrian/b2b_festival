@@ -9,7 +9,7 @@
             <form>
                 <div>
                     {% for price in pricing %}
-                        <div class="form-row">
+                        <div id="price" class="form-row">
                             <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                 <input class="form-control" id="disabledInput" type="text"
                                        placeholder={{ price.pricing_type }}
@@ -21,20 +21,20 @@
                             </div>
                             <div class="form-group col-lg-2 col-md-2 col-sm-2">
                                 <input class="form-control" id="disabledInput" type="text"
-                                       placeholder={{ price.pricing_price_EURO }}
-                                               disabled>
+                                       placeholder={{ price.pricing_price_LEU }} disabled>
                             </div>
                             <div class="form-check-radio">
                                 <label class="form-check-label">
                                     <input id="radio" class="form-check-input" type="radio" name="exampleRadios"
-                                           id="exampleRadios1"
-                                           value="option1">
+                                           value="option1"
+                                           onchange="callFunction({{ price.pricing_price_EURO }}, {{ price.pricing_price_LEU }})">
                                     <span class="form-check-sign"></span>
                                 </label>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
+                <p id="demo"></p>
                 <div class="form-row">
                     <div class="form-group col-lg-8 col-md-8 col-sm-12">
                         <label for="inputEmail4"></label>
@@ -51,13 +51,36 @@
                         <input type="lastName" class="form-control" id="lastName" placeholder="Last Name">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Check out</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Check Out
+                </button>
             </form>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Great news</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2>You have placed an order for a ticket on our great festival </h2>
+                    <h3>You will receive an email with further information</h3>
+                </div>
+                <div class="modal-footer">
+                    <div class="right-side">
+                        <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock content %}
-<script>
-    $(document).ready(function () {
-        $("#radio").click(console.log('test'))
-    });
-</script>

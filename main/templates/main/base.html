@@ -24,7 +24,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="{% url 'main:homepage' %}" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom">
+            <a class="navbar-brand" href="{% url 'main:homepage' %}" rel="tooltip" title="Coded by Creative Tim"
+               data-placement="bottom">
                 Bachata B2B
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
@@ -73,29 +74,29 @@
 {% block content %}{% endblock content %}
 <footer class="footer   footer-white ">
     <div class="container">
-{#        <div class="row">#}
-{#            <nav class="footer-nav">#}
-{#                <ul>#}
-{#                    <li>#}
-{#                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </nav>#}
-{#            <div class="credits ml-auto">#}
-{#          <span class="copyright">#}
-{#            ©#}
-{#            <script>#}
-{#              document.write(new Date().getFullYear())#}
-{#            </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim#}
-{#          </span>#}
-{#            </div>#}
-        </div>
+        {#        <div class="row">#}
+        {#            <nav class="footer-nav">#}
+        {#                <ul>#}
+        {#                    <li>#}
+        {#                        <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>#}
+        {#                    </li>#}
+        {#                    <li>#}
+        {#                        <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>#}
+        {#                    </li>#}
+        {#                    <li>#}
+        {#                        <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>#}
+        {#                    </li>#}
+        {#                </ul>#}
+        {#            </nav>#}
+        {#            <div class="credits ml-auto">#}
+        {#          <span class="copyright">#}
+        {#            ©#}
+        {#            <script>#}
+        {#              document.write(new Date().getFullYear())#}
+        {#            </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim#}
+        {#          </span>#}
+        {#            </div>#}
+    </div>
     </div>
 </footer>
 <!--   Core JS Files   -->
@@ -122,22 +123,22 @@
         'app_id': 'ufiguo1Ypg6UQRcCEX4e',
         'app_code': 'pzPilxS-fSY5Nm01JcqduA'
     });
-var targetElement = document.getElementById('mapContainer');
+    var targetElement = document.getElementById('mapContainer');
 
-// Get the default map types from the platform object:
-var defaultLayers = platform.createDefaultLayers();
+    // Get the default map types from the platform object:
+    var defaultLayers = platform.createDefaultLayers();
 
-// Instantiate the map:
-var map = new H.Map(
-  document.getElementById('mapContainer'),
-  defaultLayers.normal.map,
-  {
-  zoom: 19,
-  center: { lat: 51.513807, lng: -0.127183 }
-  });
+    // Instantiate the map:
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.normal.map,
+        {
+            zoom: 19,
+            center: {lat: 51.513807, lng: -0.127183}
+        });
 
-// Add the venue layer to the map:
-map.addLayer(defaultLayers.venues);
+    // Add the venue layer to the map:
+    map.addLayer(defaultLayers.venues);
 </script>
 <script>
     $(document).ready(function () {
@@ -175,7 +176,22 @@ map.addLayer(defaultLayers.venues);
         });
     })
 </script>
+{#<script>#}
+{#    $('.form-check-input').on('change', function () {#}
+{#        console.log('test');#}
+{#        var x = document.getElementById("price").value;#}
+{#        console.log("dwe",x)#}
+{#        document.getElementById("demo").innerHTML = "You wrote: " + x;#}
+{#    });#}
+{#</script>#}
+<script>
+    function callFunction(euro, ron) {
+        console.log('tesert', euro, ron);
+    document.getElementById("demo").innerHTML = "Paragraph changed!"+ " " + euro + " " + ron;
+    }
 
+
+</script>
 </body>
 
 </html>
