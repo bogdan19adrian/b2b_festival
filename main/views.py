@@ -15,8 +15,10 @@ def homepage(request):
                            })
 
 
-def confirmed_artists(request):
-    return HttpResponse()
+def ticketing_system(request):
+    return render(request=request,
+                  template_name='main/ticketing_system.html',
+                  context={"pricing": Pricing.objects.all})
 
 
 

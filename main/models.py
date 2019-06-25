@@ -32,6 +32,9 @@ class Pricing(models.Model):
     pricing_published = models.DateTimeField('date published')
     pricing_active = models.BooleanField()
     pricing_image = models.ImageField(upload_to='images/')
+    pricing_price_EURO = models.IntegerField()
+    pricing_price_LEU = models.IntegerField(1)
+
 
     def __str__(self):
         return self.pricing_price
