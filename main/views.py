@@ -15,7 +15,7 @@ def homepage(request):
                            })
 
 
-def ticketing_system(request):
+def ticketing(request):
     return render(request=request,
                   template_name='main/ticketing_system.html',
                   context={"pricing": Pricing.objects.all})
