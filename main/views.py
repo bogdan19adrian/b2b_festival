@@ -1,5 +1,7 @@
 import base64
+import datetime
 import os
+import uuid
 
 from django.shortcuts import render
 
@@ -37,6 +39,7 @@ def buyTicket(request):
         ticket_firstName=firstName,
         ticket_lastName=lastName,
         ticket_uniqueId=generateShortUUID(),
+        dateOfPurchase=datetime.date(datetime.now())
     )
     print(ticket)
     return render(request=request,
@@ -48,5 +51,5 @@ def buyTicket(request):
 
 
 def generateShortUUID():
-    print(base64.b64encode(os.urandom(32))[:10])
-    return base64.b64encode(os.urandom(32))[:10]
+    id = uuid.uuid4().hex[:10]
+    return id;

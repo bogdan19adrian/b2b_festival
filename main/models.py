@@ -40,10 +40,12 @@ class Pricing(models.Model):
 class Ticket(models.Model):
     ticket_priceInRon = models.IntegerField()
     ticket_priceInEuro = models.IntegerField()
-    ticket_email = models.EmailField
+    ticket_email = models.EmailField()
     ticket_firstName = models.CharField(max_length=200)
     ticket_lastName = models.CharField(max_length=200)
     ticket_uniqueId = models.CharField(max_length=200)
+    ticket_dateOfPurchase = models.DateTimeField('date published')
 
     def __str__(self):
-        return self.ticket_priceInRon
+        return self.ticket_uniqueId
+
