@@ -177,8 +177,13 @@
     })
 </script>
 <script>
+    var priceInEuro;
+    var priceInRon;
+
     function callFunction(euro, ron) {
         console.log('tesert', euro, ron);
+        priceInEuro = euro;
+        priceInRon = ron;
         document.getElementById("demo").innerHTML = "Paragraph changed!" + " " + euro + " " + ron;
     }
 
@@ -210,10 +215,18 @@
         });
         var form = $('#submitBuyTickets');
         console.log('submitBuyTickets', form);
+        var email = $('#email').val();
+        var firstName = $('#firstName').val();
+        var lastName = $('#lastName').val();
+        var data = {
+            euro: priceInEuro,
+            ron: priceInRon,
+            email: email,
+            firstName: firstName,
+            lastName: lastName
+        };
         $.post("{% url 'main:buyTickets' %}",
-            {
-                data: form.serialize()
-            })
+            data)
     });
 
 </script>
