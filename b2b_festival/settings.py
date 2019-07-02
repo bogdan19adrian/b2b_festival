@@ -24,7 +24,7 @@ SECRET_KEY = 'i$eduvt!z^-b&oj6w06)6(55agr&$qz!*jbyw!uzp0r3$ih(2i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ec2-3-120-129-151.eu-central-1.compute.amazonaws.com']
 
 # Application definition
 
@@ -120,6 +120,6 @@ MEDIA_URL = '/media/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+EMAIL_PORT = 25
 EMAIL_HOST_USER = 'bogdan.enache2db@gmail.com'
 EMAIL_HOST_PASSWORD = '@prometeudb'
