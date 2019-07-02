@@ -177,13 +177,15 @@
     })
 </script>
 <script>
-    var priceInEuro;
-    var priceInRon;
+    let priceInEuro;
+    let priceInRon;
+    let pass_type;
 
-    function callFunction(euro, ron) {
-        console.log('tesert', euro, ron);
+    function callFunction(euro, ron, passType) {
+        console.log('tesert', euro, ron, passType);
         priceInEuro = euro;
         priceInRon = ron;
+        pass_type = passType;
         document.getElementById("demo").innerHTML = "Paragraph changed!" + " " + euro + " " + ron;
     }
 
@@ -223,7 +225,8 @@
             ron: priceInRon,
             email: email,
             firstName: firstName,
-            lastName: lastName
+            lastName: lastName,
+            passType: pass_type
         };
         $.post("{% url 'main:buyTickets' %}",
             data)
