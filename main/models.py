@@ -49,3 +49,26 @@ class Ticket(models.Model):
     def __str__(self):
         return self.ticket_uniqueId
 
+
+class About(models.Model):
+    about_title = models.TextField()
+    about_description = models.TextField()
+
+    def __str__(self):
+        return self.about_title
+
+
+class AboutBullet(models.Model):
+    about_bullet_title = models.CharField(max_length=200)
+    about_bullet_description = models.CharField(max_length=500)
+    about_bullet_icon = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.about_bullet_title
+
+
+class Program(models.Model):
+    program_image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.program_image

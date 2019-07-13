@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from main.mail.MailSender import MailSender
-from main.models import Carousel, ConfirmedArtists, Pricing, Ticket
+from main.models import Carousel, ConfirmedArtists, Pricing, Ticket, Program, AboutBullet, About
 
 
 def homepage(request):
@@ -13,7 +13,10 @@ def homepage(request):
                   template_name='main/home.html',
                   context={"carousels": Carousel.objects.all,
                            "confirmed_artists": ConfirmedArtists.objects.all,
-                           "pricing": Pricing.objects.all
+                           "pricing": Pricing.objects.all,
+                           "about": About.objects.last(),
+                           "about_bullet": AboutBullet.objects.all,
+                           "program": Program.objects.last()
                            })
 
 

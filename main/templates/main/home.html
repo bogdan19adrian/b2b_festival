@@ -14,206 +14,186 @@
 {#</html>#}
 
 
-
 {% extends "main/base.html" %}
 
 {% block content %}
-<div class="page-header" data-parallax="true"
-     style="background-image: url('https://www.worldtravelguide.net/wp-content/uploads/2017/03/shu-Romania-Bucharest-Unirii-508403050-EDITORIALONLY-1440x823.jpg');">
-    <div class="filter"></div>
-    <div class="container">
-        <div class="motto text-center">
-            <h1>BACHATA</h1>
-            <h3>Take over bucharest</h3>
-            <br/>
-            {#        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>#}
-            {#        <button type="button" class="btn btn-outline-neutral btn-round">Download</button>#}
-        </div>
-    </div>
-</div>
-<div class="main">
-    <div id="about" class="section text-center">
+    <div class="page-header" data-parallax="true"
+         style="background-image: url('https://www.worldtravelguide.net/wp-content/uploads/2017/03/shu-Romania-Bucharest-Unirii-508403050-EDITORIALONLY-1440x823.jpg');">
+        <div class="filter"></div>
         <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="title">Let's talk product</h2>
-                    <h5 class="description">This is the paragraph where you can write more details about your product.
-                        Keep you user engaged by providing meaningful information. Remember that by this time, the user
-                        is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see
-                        more.</h5>
-                    <br>
-                    <a href="#paper-kit" class="btn btn-danger btn-round">See Details</a>
-                </div>
-            </div>
-            <br/>
-            <br/>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <i class="nc-icon nc-album-2"></i>
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Beautiful Gallery</h4>
-                            <p class="description">Spend your time generating new ideas. You don't have to think of
-                                implementing.</p>
-                            <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <i class="nc-icon nc-bulb-63"></i>
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">New Ideas</h4>
-                            <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
-                            <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <i class="nc-icon nc-chart-bar-32"></i>
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Statistics</h4>
-                            <p>Choose from a veriety of many colors resembling sugar paper pastels.</p>
-                            <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="info">
-                        <div class="icon icon-danger">
-                            <i class="nc-icon nc-sun-fog-29"></i>
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Delightful design</h4>
-                            <p>Find unique and handmade delightful designs related items directly from our sellers.</p>
-                            <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="motto text-center">
+                <h1>BACHATA</h1>
+                <h3>Take over bucharest</h3>
+                <br/>
+                {#        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>#}
+                {#        <button type="button" class="btn btn-outline-neutral btn-round">Download</button>#}
             </div>
         </div>
     </div>
-    <div id="confirmed_artists" class="section section-dark text-center">
-        <div class="container">
-            <h2 class="title">Artists</h2>
-            <h5 class="description">They have already confirmed their presence to our festival. More are about to do so.
-                Stay tuned for more news</h5>
-            <br>
-            <div class="row">
-                {% for confirmed in confirmed_artists %}
-                    <div class="col-md-4">
-                        <div class="card card-profile card-plain">
-                            <div class="card-avatar">
-                                <a href="#avatar">
-                                    <img src="{{ confirmed.confirmedArtists_image.url }}" alt="...">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a href="#paper-kit">
-                                    <div class="author">
-                                        <h4 class="card-title">{{ confirmed.confirmedArtists_name }}</h4>
-                                    </div>
-                                </a>
-                                <p class="card-description text-center">
-                                    {{ confirmed.confirmedArtists_description }}
-                                </p>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                        class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                        class="fa fa-google-plus"></i></a>
-                                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                        class="fa fa-linkedin"></i></a>
+    <div class="main">
+        <div id="about" class="section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="title">{{ about.about_title }}</h2>
+                        <h5 class="description">{{ about.about_description }}</h5>
+                        <br>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    {% for bullet in about_bullet %}
+                        <div class="col-md-3">
+                            <div class="info">
+                                <div class="icon icon-danger">
+                                    <i class="nc-icon {{ bullet.about_bullet_icon }}"></i>
+                                </div>
+                                <div class="description">
+                                    <h4 class="info-title">{{ bullet.about_bullet_title }}</h4>
+                                    <p class="description">{{ bullet.about_bullet_description }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <div id="pricing" class="section text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="title">Pricing</h2>
-                    <h5 class="description">This prices are available only until 15 December 2019</h5>
-                    <br>
-                    <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>
+                    {% endfor %}
                 </div>
             </div>
-            <br/>
-            <br/>
-            <div class="row">
-                {% for price in pricing %}
-                <div class="col-md-4">
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top"  src="{{ price.pricing_image.url }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title">{{  price.pricing_price }} </h4>
-                            <h2 class="card-text">{{ price.pricing_type }}</h2>
-                            <p class="card-text">{{ price.pricing_details }}</p>
+        </div>
+        <div id="confirmed_artists" class="section section-dark text-center">
+            <div class="container">
+                <h2 class="title">Artists</h2>
+                <h5 class="description">They have already confirmed their presence to our festival. More are about to do
+                    so.
+                    Stay tuned for more news</h5>
+                <br>
+                <div class="row">
+                    {% for confirmed in confirmed_artists %}
+                        <div class="col-md-4">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#avatar">
+                                        <img src="{{ confirmed.confirmedArtists_image.url }}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#paper-kit">
+                                        <div class="author">
+                                            <h4 class="card-title">{{ confirmed.confirmedArtists_name }}</h4>
+                                        </div>
+                                    </a>
+                                    <p class="card-description text-center">
+                                        {{ confirmed.confirmedArtists_description }}
+                                    </p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
+                                            class="fa fa-twitter"></i></a>
+                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
+                                            class="fa fa-google-plus"></i></a>
+                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
+                                            class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
-    <div id="location" class="section section-dark text-center">
-        <div class="container">
-            <div style="width: 100%; height: 480px" id="mapContainer"></div>
+        <div id="pricing" class="section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="title">Pricing</h2>
+                        <h5 class="description">This prices are available only until 15 December 2019</h5>
+                        <br>
+                        <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    {% for price in pricing %}
+                        <div class="col-md-4">
+                            <div class="card" style="width: 20rem;">
+                                <img class="card-img-top" src="{{ price.pricing_image.url }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ price.pricing_price }} </h4>
+                                    <h2 class="card-text">{{ price.pricing_type }}</h2>
+                                    <p class="card-text">{{ price.pricing_details }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="section landing-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="text-center">Keep in touch?</h2>
-                    <form class="contact-form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
+        <div id="program" class="section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="title">PROGRAM</h2>
+                        <h5 class="description"></h5>
+                        <br>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="card bg-dark text-white">
+                    <img class="card-img" src="..." alt="Card image">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title text-white">Card title</h4>
+                        <p class="card-text text-white">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="location" class="section section-dark text-center">
+            <div class="container">
+                <div style="width: 100%; height: 480px" id="mapContainer"></div>
+            </div>
+        </div>
+        <div class="section landing-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <h2 class="text-center">Keep in touch?</h2>
+                        <form class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
                       <span class="input-group-text">
                         <i class="nc-icon nc-single-02"></i>
                       </span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Name">
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Name">
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Email</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
                       <span class="input-group-text">
                         <i class="nc-icon nc-email-85"></i>
                       </span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Email">
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Email">
                                 </div>
                             </div>
-                        </div>
-                        <label>Message</label>
-                        <textarea class="form-control" rows="4"
-                                  placeholder="Tell us your thoughts and feelings..."></textarea>
-                        <div class="row">
-                            <div class="col-md-4 ml-auto mr-auto">
-                                <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                            <label>Message</label>
+                            <textarea class="form-control" rows="4"
+                                      placeholder="Tell us your thoughts and feelings..."></textarea>
+                            <div class="row">
+                                <div class="col-md-4 ml-auto mr-auto">
+                                    <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock content %}
