@@ -68,7 +68,8 @@ class AboutBullet(models.Model):
 
 
 class Program(models.Model):
+    program_title = program_title = models.CharField(max_length=50)
     program_image = models.ImageField(upload_to='images/')
 
     def __str__(self):
-        return self.program_image
+        return self.program_title
