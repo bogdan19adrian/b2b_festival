@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['ec2-3-120-129-151.eu-central-1.compute.amazonaws.com', '127.0.
 
 INSTALLED_APPS = [
     'main.apps.MainConfig',
+    'dance_school.apps.DanceSchoolConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

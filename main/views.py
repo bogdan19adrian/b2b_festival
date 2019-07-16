@@ -26,6 +26,10 @@ def ticketing(request):
                   context={"pricing": Pricing.objects.all})
 
 
+def past_edition(request):
+    return render(request=request,
+                  template_name='main/past_edition.html')
+
 def buyTicket(request):
     print('tesdfsdfsfewferf')
     print(request)
