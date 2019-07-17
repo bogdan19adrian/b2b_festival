@@ -58,10 +58,11 @@
                             </ol>
                             <div class="carousel-inner">
                                 {% for carousel in carousels %}
-                                <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                                    <img class="d-block w-100" src="{{ carousel.carousel_image.url }}" alt="First slide">
-                                </div>
-                            {% endfor %}
+                                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                                        <img class="d-block w-100" src="{{ carousel.carousel_image.url }}"
+                                             alt="First slide">
+                                    </div>
+                                {% endfor %}
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                data-slide="prev">
@@ -132,7 +133,7 @@
                         <h2 class="title">Pricing</h2>
                         <h5 class="description">This prices are available only until 15 December 2019</h5>
                         <br>
-                        <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>
+{#                        <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>#}
                     </div>
                 </div>
                 <br/>
@@ -148,11 +149,68 @@
                                     <h2 class="card-text">{{ price.pricing_type }}</h2>
                                     <p class="card-text">{{ price.pricing_details }}</p>
                                 </div>
+                                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="buyTicket({{ price.pricing_price_EURO }}, {{ price.pricing_price_LEU }},'{{ price.pricing_type }}')">
+                                    Buy Tickets
+                                </button>
                             </div>
                         </div>
                     {% endfor %}
                 </div>
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <form method="post" id="buyTickets" action="">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                            <label for="inputEmail"></label>
+                                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="firstName"></label>
+                                            <input type="text" class="form-control" id="firstName"
+                                                   placeholder="First Name" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="lastName"></label>
+                                            <input type="text" class="form-control" id="lastName"
+                                                   placeholder="Last Name" required>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="left-side">
+                                <button type="button" class="btn btn-default btn-link" data-dismiss="modal">Cancel
+                                </button>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="right-side">
+                                <button id="submitBuyTickets" type="submit"
+                                        class="btn btn-danger btn-link"
+                                        data-toggle="modal"
+                                        data-target="#exampleModal">
+                                        <span class="form-check-sign"></span>Check Out</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div id="program" class="section section-dark text-center">
             <div class="container">
