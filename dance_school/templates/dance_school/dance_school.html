@@ -281,20 +281,20 @@
 
 </div>
 <div id="location" class="bg-1">
-    <div>
-        <img src="../../static/dance_school/img/spice.PNG">
+    <div class="container text-center">
+        <h3>LOCATION</h3>
+        <div style="width: 100%; height: 480px" id="mapContainer"></div>
     </div>
 </div>
 <div id="contact" class="container">
     <h3 class="text-center">Contact</h3>
-    <p class="text-center"><em>We love our fans!</em></p>
+    <p class="text-center"><em>We to dance and teach</em></p>
 
     <div class="row">
         <div class="col-md-4">
-            <p>Fan? Drop a note.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
-            <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+            <p><span class="glyphicon glyphicon-user"></span>Person of Contact{{ contact.contact_name }}</p>
+            <p><span class="glyphicon glyphicon-phone"></span>Phone: {{ contact.contact_phone_number }}</p>
+            <p><span class="glyphicon glyphicon-envelope"></span>Address: {{ contact.contact_address }}</p>
         </div>
         <div class="col-md-8">
             <div class="row">
@@ -357,6 +357,35 @@
         });
     })
 </script>
+<!--  Google Maps Plugin    -->
+<script src="https://js.api.here.com/v3/3.0/mapsjs-core.js"
+        type="text/javascript" charset="utf-8"></script>
+<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+        type="text/javascript" charset="utf-8"></script>
+<script>
+    // Initialize the platform object:
+    var platform = new H.service.Platform({
+        'app_id': 'ufiguo1Ypg6UQRcCEX4e',
+        'app_code': 'pzPilxS-fSY5Nm01JcqduA'
+    });
+    var targetElement = document.getElementById('mapContainer');
 
+    // Get the default map types from the platform object:
+    var defaultLayers = platform.createDefaultLayers();
+
+    // Instantiate the map:
+    var map = new H.Map(
+        document.getElementById('mapContainer'),
+        defaultLayers.normal.map,
+        {#44.4333574,26.0976474#}
+        {
+            zoom: 17,
+            center: {lat: 44.4333574, lng: 26.0976474}
+        });
+
+    // Add the venue layer to the map:
+    map.addLayer(defaultLayers.venues);
+</script>
 </body>
 </html>
+

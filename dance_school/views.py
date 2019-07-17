@@ -10,7 +10,7 @@ def dance_school(request):
                   context={
                       "carousel": Carousel.objects.all,
                       "dayProgram": DayProgram.objects.all,
-                      "contact": Contact.objects.all,
+                      "contact": Contact.objects.last(),
                       "instructor": Instructor.objects.all,
                       "programInterval": ProgramInterval.objects.all,
                       "about": About.objects.last(),
