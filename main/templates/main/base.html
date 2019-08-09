@@ -90,8 +90,8 @@
 <footer class="footer  footer-black " style="background-color: #1b1e21 !important;">
     <div class="container">
         <a class="up-arrow" href="#b2bhome" data-toggle="tooltip" title="TO TOP">
-        <span class="glyphicon glyphicon-chevron-up"></span>
-    </a><br><br>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a><br><br>
     </div>
 </footer>
 <!--   Core JS Files   -->
@@ -175,16 +175,21 @@
     let priceInEuro;
     let priceInRon;
     let pass_type;
+    let paymentOption;
 
-    function callFunction(euro, ron, passType) {
-        console.log('tesert', euro, ron, passType);
-        priceInEuro = euro;
-        priceInRon = ron;
-        pass_type = passType;
-        document.getElementById("demo").innerHTML = "Paragraph changed!" + " " + euro + " " + ron;
+    function seletctPayment(event) {
+        var e = document.getElementById("paymentOption");
+        var option = e.options[e.selectedIndex].value;
+        console.log("the select payment dropdown has been changed", option);
+
+        if (option != null && option === 'PayPal') {
+            $("#alertPricePayPal").addClass("alert alert alert-danger");
+            $("#alertPricePayPal").text("WARNING! IF you choose to pay via PayPal you will have to pay 5 Euros in addition to the value of the ticket");
+            paymentOption = option;
+        }
     }
 
-    function buyTicket(euro, ron, passType) {
+    function openBuyTicketsModal(euro, ron, passType) {
         console.log('tesert', euro, ron, passType);
         console.log('tesert', euro, ron, passType);
         priceInEuro = euro;
@@ -223,17 +228,31 @@
         var email = $('#email').val();
         var firstName = $('#firstName').val();
         var lastName = $('#lastName').val();
+        if (paymentOption == null) {
+            var e = document.getElementById("paymentOption");
+            paymentOption = e.options[e.selectedIndex].value;
+        }
         var data = {
             euro: priceInEuro,
             ron: priceInRon,
             email: email,
             firstName: firstName,
             lastName: lastName,
-            passType: pass_type
+            passType: pass_type,
+            paymentOption: paymentOption
         };
-        $.post("{% url 'main:buyTickets' %}",
-            data)
-    });
+        $.post("{% url 'main:buyTickets' %}", data)
+        priceInEuro = null,
+        priceInRon  = null,
+        email  = null,
+        firstName  = null,
+        lastName  = null,
+        pass_type  = null,
+        paymentOption = null
+        document.getElementById("buyTickets").reset();
+        $("#alertPricePayPal").removeClass("alert alert alert-danger");
+        $("#alertPricePayPal").text("");
+    })
 
 </script>
 </body>

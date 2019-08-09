@@ -1,109 +1,109 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-    <div class="page-header" style="min-height: 20vh !important;" data-parallax="true">
-
-    </div>
-    <div id="checkoutSection" class="section text-center">
-        <div class="container">
-            <form method="post" id="buyTickets" action="">
-            {% csrf_token %}
-                <div>
-                    {% for price in pricing %}
-                        <div id="price" class="form-row border border-dark" style="padding-top: 10px !important; font-weight: unset !important;">
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-5 col-sm-5">
-                                        <label class="form-check-label rounded">Pass Type</label>
-                                    </div>
-                                    <div class="col-lg-7 col-md-7 col-sm-7">
-                                        <span class="form-check" id="disabledInput"
-                                              type="text">{{ price.pricing_type }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="row ">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <label class="form-check-label rounded">Price in euro:</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                    <span class="form-check" id="disabledInput"
-                                          type="text">{{ price.pricing_price_EURO }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <label class="form-check-label rounded">Price in LEU</label>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <span class="form-check" id="disabledInput"
-                                              type="text">{{ price.pricing_price_LEU }}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="form-check-radio col-lg-1 col-md-1 col-sm-1">
-                                    <label class="form-check-label">
-                                        <input id="radio" class="form-check-input" type="radio" name="exampleRadios"
-                                               value="option1"
-                                               onchange="callFunction({{ price.pricing_price_EURO }}, {{ price.pricing_price_LEU }},'{{ price.pricing_type }}')">
-                                        <span class="form-check-sign"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-                <p id="demo"></p>
-                <div class="form-row">
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                        <label for="inputEmail4"></label>
-                        <input type="email" class="form-control" id="email" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="firstName"></label>
-                        <input type="firstName" class="form-control" id="firstName" placeholder="First Name">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="lastName"></label>
-                        <input type="lastName" class="form-control" id="lastName" placeholder="Last Name">
-                    </div>
-                </div>
-                <button id="submitBuyTickets" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Check Out
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Great news</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h2>You have placed an order for a ticket on our great festival </h2>
-                    <h3>You will receive an email with further information</h3>
-                </div>
-                <div class="modal-footer">
-                    <div class="right-side">
-                        <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{#    <div class="page-header" style="min-height: 20vh !important;" data-parallax="true">#}
+{##}
+{#    </div>#}
+{#    <div id="checkoutSection" class="section text-center">#}
+{#        <div class="container">#}
+{#            <form method="post" id="buyTickets" action="">#}
+{#            {% csrf_token %}#}
+{#                <div>#}
+{#                    {% for price in pricing %}#}
+{#                        <div id="price" class="form-row border border-dark" style="padding-top: 10px !important; font-weight: unset !important;">#}
+{#                            <div class="col-lg-3 col-md-3 col-sm-3">#}
+{#                                <div class="row">#}
+{#                                    <div class="col-lg-5 col-md-5 col-sm-5">#}
+{#                                        <label class="form-check-label rounded">Pass Type</label>#}
+{#                                    </div>#}
+{#                                    <div class="col-lg-7 col-md-7 col-sm-7">#}
+{#                                        <span class="form-check" id="disabledInput"#}
+{#                                              type="text">{{ price.pricing_type }}</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-lg-3 col-md-3 col-sm-3">#}
+{#                                <div class="row ">#}
+{#                                    <div class="col-lg-6 col-md-6 col-sm-6">#}
+{#                                        <label class="form-check-label rounded">Price in euro:</label>#}
+{#                                    </div>#}
+{#                                    <div class="col-lg-4 col-md-4 col-sm-4">#}
+{#                                    <span class="form-check" id="disabledInput"#}
+{#                                          type="text">{{ price.pricing_price_EURO }}</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-lg-3 col-md-3 col-sm-3">#}
+{#                                <div class="row">#}
+{#                                    <div class="col-lg-6 col-md-6 col-sm-6">#}
+{#                                        <label class="form-check-label rounded">Price in LEU</label>#}
+{#                                    </div>#}
+{#                                    <div class="col-lg-4 col-md-4 col-sm-4">#}
+{#                                        <span class="form-check" id="disabledInput"#}
+{#                                              type="text">{{ price.pricing_price_LEU }}</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-lg-3 col-md-3 col-sm-3">#}
+{#                                <div class="form-check-radio col-lg-1 col-md-1 col-sm-1">#}
+{#                                    <label class="form-check-label">#}
+{#                                        <input id="radio" class="form-check-input" type="radio" name="exampleRadios"#}
+{#                                               value="option1"#}
+{#                                               onchange="callFunction({{ price.pricing_price_EURO }}, {{ price.pricing_price_LEU }},'{{ price.pricing_type }}')">#}
+{#                                        <span class="form-check-sign"></span>#}
+{#                                    </label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#                <p id="demo"></p>#}
+{#                <div class="form-row">#}
+{#                    <div class="form-group col-lg-12 col-md-12 col-sm-12">#}
+{#                        <label for="inputEmail4"></label>#}
+{#                        <input type="email" class="form-control" id="email" placeholder="Email">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-row">#}
+{#                    <div class="form-group col-md-6">#}
+{#                        <label for="firstName"></label>#}
+{#                        <input type="firstName" class="form-control" id="firstName" placeholder="First Name">#}
+{#                    </div>#}
+{#                    <div class="form-group col-md-6">#}
+{#                        <label for="lastName"></label>#}
+{#                        <input type="lastName" class="form-control" id="lastName" placeholder="Last Name">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <button id="submitBuyTickets" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">#}
+{#                    Check Out#}
+{#                </button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!-- Modal -->#}
+{#    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"#}
+{#         aria-hidden="true">#}
+{#        <div class="modal-dialog" role="document">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <h5 class="modal-title" id="exampleModalLabel">Great news</h5>#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                        <span aria-hidden="true">&times;</span>#}
+{#                    </button>#}
+{#                </div>#}
+{#                <div class="modal-body">#}
+{#                    <h2>You have placed an order for a ticket on our great festival </h2>#}
+{#                    <h3>You will receive an email with further information</h3>#}
+{#                </div>#}
+{#                <div class="modal-footer">#}
+{#                    <div class="right-side">#}
+{#                        <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
 
 {% endblock content %}

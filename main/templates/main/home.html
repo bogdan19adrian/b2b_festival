@@ -112,14 +112,67 @@
                                         {{ confirmed.confirmedArtists_description }}
                                     </p>
                                 </div>
-                                <div class="card-footer text-center">
-                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                            class="fa fa-twitter"></i></a>
-                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                            class="fa fa-google-plus"></i></a>
-                                    <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i
-                                            class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="photo" class="section section-dark text-center">
+            <div class="container">
+                <h2 class="title">Photographers</h2>
+                <h5 class="description">They will be there to capture all the unforgettable moments</h5>
+                <br>
+                <div class="row">
+                    {% for photo in confirmed_photo %}
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#avatar">
+                                        <img src="{{ photo.confirmedPhoto_image.url }}" alt="...">
+                                    </a>
                                 </div>
+                                <div class="card-body">
+                                    <a href="#paper-kit">
+                                        <div class="author">
+                                            <h4 class="card-title">{{ photo.confirmedPhoto_name }}</h4>
+                                        </div>
+                                    </a>
+                                    <p class="card-description text-center">
+                                        {{ photo.confirmedPhoto_description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="dj" class="section text-center">
+            <div class="container">
+                <h2 class="title">DJ`s</h2>
+                <h5 class="description">They will delight you with the newest hits</h5>
+                <br>
+                <div class="row">
+                    {% for dj in confirmed_djs %}
+                        <div class="col-md-3">
+                            <div class="card card-profile card-plain">
+                                <div class="card-avatar">
+                                    <a href="#avatar">
+                                        <img src="{{ dj.confirmedDJs_image.url }}" alt="...">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#paper-kit">
+                                        <div class="author">
+                                            <h4 class="card-title">{{ dj.confirmedDJs_name }}</h4>
+                                        </div>
+                                    </a>
+                                    <p class="card-description text-center">
+                                        {{ dj.confirmedDJs_description }}
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
                     {% endfor %}
@@ -133,7 +186,7 @@
                         <h2 class="title">Pricing</h2>
                         <h5 class="description">This prices are available only until 15 December 2019</h5>
                         <br>
-{#                        <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>#}
+                        {#                        <a href="{% url 'main:ticketing' %}" class="btn btn-danger btn-round">Book Now</a>#}
                     </div>
                 </div>
                 <br/>
@@ -149,7 +202,8 @@
                                     <h2 class="card-text">{{ price.pricing_type }}</h2>
                                     <p class="card-text">{{ price.pricing_details }}</p>
                                 </div>
-                                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal" onclick="buyTicket({{ price.pricing_price_EURO }}, {{ price.pricing_price_LEU }},'{{ price.pricing_type }}')">
+                                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal"
+                                        onclick="openBuyTicketsModal({{ price.pricing_price_EURO }},{{ price.pricing_price_LEU }},'{{ price.pricing_type }}')">
                                     Buy Tickets
                                 </button>
                             </div>
@@ -172,10 +226,23 @@
                             <div class="container">
                                 <form method="post" id="buyTickets" action="">
                                     {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="paymentOptionLabel">Choose Payment Type</label>
+                                        <select class="form-control" id="paymentOption"
+                                                onchange="seletctPayment(event)">
+                                            {% for payment in payment_options %}
+                                                <option value="{{ payment }}">{{ payment }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div id="alertPricePayPal" role="alert">
+
+                                    </div>
                                     <div class="form-row">
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                             <label for="inputEmail"></label>
-                                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                                   required>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -204,7 +271,8 @@
                                         class="btn btn-danger btn-link"
                                         data-toggle="modal"
                                         data-target="#exampleModal">
-                                        <span class="form-check-sign"></span>Check Out</button>
+                                    <span class="form-check-sign"></span>Check Out
+                                </button>
                             </div>
                         </div>
                     </div>

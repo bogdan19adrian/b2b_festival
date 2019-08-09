@@ -68,8 +68,39 @@ class AboutBullet(models.Model):
 
 
 class Program(models.Model):
-    program_title = program_title = models.CharField(max_length=50)
+    program_title = models.CharField(max_length=50)
     program_image = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return self.program_title
+
+
+class PaymentOption(models.Model):
+    paymentType = models.CharField(max_length=50, primary_key=True)
+    account_owner = models.CharField(max_length=50)
+    account_number = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.paymentType
+
+
+class ConfirmedPhoto(models.Model):
+    confirmedPhoto_name = models.CharField(max_length=200)
+    confirmedPhoto_description = models.TextField()
+    confirmedPhoto_published = models.DateTimeField('date published')
+    confirmedPhoto_active = models.BooleanField()
+    confirmedPhoto_image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.confirmedPhoto_name
+
+
+class ConfirmedDJs(models.Model):
+    confirmedDJs_name = models.CharField(max_length=200)
+    confirmedDJs_description = models.TextField()
+    confirmedDJs_published = models.DateTimeField('date published')
+    confirmedDJs_active = models.BooleanField()
+    confirmedDJs_image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.confirmedDJs_name
