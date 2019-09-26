@@ -38,7 +38,7 @@ def past_edition(request):
                   template_name='main/past_edition.html')
 
 def buyTicket(request):
-    print('tesdfsdfsfewferf')
+    print('inside buy ticket')
     print(request)
     priceRon = request.POST['ron']
     priceEuro = request.POST['euro']
@@ -85,7 +85,7 @@ def sendWithSendGrid(emailFrom, emailTo, subject, content):
         subject=subject,
         html_content=content)
     try:
-        sg = SendGridAPIClient('')
+        sg = SendGridAPIClient('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')
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
@@ -151,3 +151,6 @@ def generateMailContentBasedOnPaymentType(paymentType, code, rons, euros, ticket
                      '<![endif]--> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </div> </center> </body> </html>'
 
     return html_content
+
+def send_festival_site_message(request):
+    print(request)

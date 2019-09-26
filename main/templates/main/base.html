@@ -137,6 +137,7 @@
 </script>
 <script>
     $(document).ready(function () {
+        // Initialize Tooltip
         // Add smooth scrolling to all links in navbar + footer link
         $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
             // Make sure this.hash has a value before overriding default behavior
@@ -243,16 +244,56 @@
         };
         $.post("{% url 'main:buyTickets' %}", data)
         priceInEuro = null,
-        priceInRon  = null,
-        email  = null,
-        firstName  = null,
-        lastName  = null,
-        pass_type  = null,
-        paymentOption = null
+            priceInRon = null,
+            email = null,
+            firstName = null,
+            lastName = null,
+            pass_type = null,
+            paymentOption = null
         document.getElementById("buyTickets").reset();
         $("#alertPricePayPal").removeClass("alert alert alert-danger");
         $("#alertPricePayPal").text("");
     })
+
+    $(document).on('submit', '#contactFestival', function (e) {
+        console.log($('#termsFestMessage').is(":checked"));
+        if ($('#termsFestMessage').is(":checked") === false) {
+            $('#errorMsgFest').prepend('<div class="alert alert-warning alert-dismissible fade show" role="alert">\n' +
+                '  <strong>Holy guacamole!</strong> You should check in on some of those fields below.\n' +
+                '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                '    <span aria-hidden="true">&times;</span>\n' +
+                '  </button>\n' +
+                '</div>');
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '{% url "main:festivalMessage" %}',
+            data: {
+                nameFestMessage: $('#nameFestMessage').val(),
+                emailFestMessage: $('#emailFestMessage').val(),
+                messageFestMessage: $('#messageFestMessage').val(),
+                termsFestMessage: $('#termsFestMessage').is(":checked"),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                action: 'post'
+            },
+            success: function (json) {
+                document.getElementById("post-form").reset();
+                $(".posts").prepend('<div class="col-md-6">' +
+                    '<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">' +
+                    '<div class="col p-4 d-flex flex-column position-static">' +
+                    '<h3 class="mb-0">' + json.title + '</h3>' +
+                    '<p class="mb-auto">' + json.description + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>'
+                )
+            },
+            error: function (xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+            }
+        });
+    });
 
 </script>
 </body>
