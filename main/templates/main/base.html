@@ -253,17 +253,21 @@
         document.getElementById("buyTickets").reset();
         $("#alertPricePayPal").removeClass("alert alert alert-danger");
         $("#alertPricePayPal").text("");
-    })
+         document.getElementById("buyTickets").reset();
+    });
 
-    $(document).on('submit', '#contactFestival', function (e) {
+    {#$(document).on('submit', '#contactFestival', function (e) {#}
+    $("#submitFestivalMessage").click(function () {
         console.log($('#termsFestMessage').is(":checked"));
         if ($('#termsFestMessage').is(":checked") === false) {
-            $('#errorMsgFest').prepend('<div class="alert alert-warning alert-dismissible fade show" role="alert">\n' +
-                '  <strong>Holy guacamole!</strong> You should check in on some of those fields below.\n' +
-                '  <button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
-                '    <span aria-hidden="true">&times;</span>\n' +
-                '  </button>\n' +
+            $('#errorMsgFest').prepend(
+                '<br>' +
+                '<div class="alert alert-danger" role="alert">\n' +
+                '  You must agree terms and conditions if you want to prceed' +
                 '</div>');
+            setTimeout(function () {
+                document.getElementById("errorMsgFest").innerHTML = '';
+            }, 7000);
             return;
         }
         $.ajax({
@@ -278,16 +282,7 @@
                 action: 'post'
             },
             success: function (json) {
-                document.getElementById("post-form").reset();
-                $(".posts").prepend('<div class="col-md-6">' +
-                    '<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">' +
-                    '<div class="col p-4 d-flex flex-column position-static">' +
-                    '<h3 class="mb-0">' + json.title + '</h3>' +
-                    '<p class="mb-auto">' + json.description + '</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>'
-                )
+                document.getElementById("contactFestival").reset();
             },
             error: function (xhr, errmsg, err) {
                 console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console

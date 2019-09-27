@@ -85,7 +85,7 @@ def sendWithSendGrid(emailFrom, emailTo, subject, content):
         subject=subject,
         html_content=content)
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient('')
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
@@ -154,3 +154,4 @@ def generateMailContentBasedOnPaymentType(paymentType, code, rons, euros, ticket
 
 def send_festival_site_message(request):
     print(request)
+    return render(request, 'main/home.html')
