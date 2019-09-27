@@ -17,3 +17,6 @@ def dance_school(request):
                            })
 
 
+def send_school_site_message(request):
+    print(request)
+    return render(request, 'dance_school/dance_school.html')
