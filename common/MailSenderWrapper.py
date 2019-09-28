@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from b2b_festival import settings
 
 
-class MailSender:
+class MailSenderWrapper:
 
     def __init__(self, subject, message,  recipient_list):
         self.subject = subject

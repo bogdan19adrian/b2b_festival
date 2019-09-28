@@ -2,12 +2,12 @@ import datetime
 import uuid
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-
+from common.MailSenderWrapper import MailSenderWrapper
 from django.shortcuts import render
 
 # Create your views here.
 from b2b_festival import settings
-from main.mail.MailSender import MailSender
+from common.common import validate_email
 from main.models import Carousel, ConfirmedArtists, Pricing, Ticket, Program, AboutBullet, About, PaymentOption, \
     ConfirmedPhoto, ConfirmedDJs
 
@@ -85,7 +85,7 @@ def sendWithSendGrid(emailFrom, emailTo, subject, content):
         subject=subject,
         html_content=content)
     try:
-        sg = SendGridAPIClient('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')
+        sg = SendGridAPIClient('')
         response = sg.send(message)
         print(response.status_code)
         print(response.body)
@@ -154,4 +154,16 @@ def generateMailContentBasedOnPaymentType(paymentType, code, rons, euros, ticket
 
 def send_festival_site_message(request):
     print(request)
+    nameFestMessage = request.POST['nameFestMessage']
+    emailFestMessage = request.POST['emailFestMessage']
+    messageFestMessage = request.POST['messageFestMessage']
+    termsFestMessage = request.POST['termsFestMessage']
+    if (validate_email(emailFestMessage) & (termsFestMessage == 'false')):
+        print("conditions not met")
+    else:
+        subject = "Mesaj de pe pagina festivalului de la " + emailFestMessage + " " + nameFestMessage;
+        listOfRecepients = [emailFestMessage]
+        mail = MailSenderWrapper(subject, messageFestMessage, listOfRecepients)
+        mail.send_email()
     return render(request, 'main/home.html')
+

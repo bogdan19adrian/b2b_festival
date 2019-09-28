@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <!-- Theme Made By www.w3schools.com - No Copyright -->
-    <title>Bootstrap Theme The Band</title>
+    <title>DekaDance Academy</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+            type="text/javascript" charset="utf-8"></script>
     <style>
         body {
             font: 400 15px/1.8 Lato, sans-serif;
@@ -389,34 +395,41 @@
         });
     })
 </script>
-<!--  Google Maps Plugin    -->
-<script src="https://js.api.here.com/v3/3.0/mapsjs-core.js"
-        type="text/javascript" charset="utf-8"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
-        type="text/javascript" charset="utf-8"></script>
+
 <script>
-    // Initialize the platform object:
+    // Instantiate a map and platform object:
     var platform = new H.service.Platform({
-        'app_id': 'ufiguo1Ypg6UQRcCEX4e',
-        'app_code': 'pzPilxS-fSY5Nm01JcqduA'
+        'apikey': ''
     });
-    var targetElement = document.getElementById('mapContainer');
 
-    // Get the default map types from the platform object:
-    var defaultLayers = platform.createDefaultLayers();
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
 
-    // Instantiate the map:
+    // Instantiate (and display) a map object:
     var map = new H.Map(
         document.getElementById('mapContainer'),
-        defaultLayers.normal.map,
-        {#44.4333574,26.0976474#}
+        maptypes.vector.normal.map,
         {
-            zoom: 17,
-            center: {lat: 44.4333574, lng: 26.0976474}
+                zoom: 16,
+            center: {lng: 26.0956167, lat: 44.4336465}
         });
+    var svgMarkup = '<svg width="24" height="24" ' +
+        'xmlns="http://www.w3.org/2000/svg">' +
+        '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+        'height="22" /><text x="12" y="18" font-size="12pt" ' +
+        'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+        'fill="white">H</text></svg>';
 
-    // Add the venue layer to the map:
-    map.addLayer(defaultLayers.venues);
+    // Create an icon, an object holding the latitude and longitude, and a marker:
+    var icon = new H.map.Icon(svgMarkup),
+        coords = {lat: 44.433638, lng: 26.097939},
+        marker = new H.map.Marker(coords, {icon: icon});
+
+    // Add the marker to the map and center the map at the location of the marker:
+    map.addObject(marker);
+    map.setCenter(coords);
+
+
 </script>
 
 <script>
@@ -437,10 +450,10 @@
             type: 'POST',
             url: '{% url "dance_School:schoolMessage" %}',
             data: {
-                nameFestMessage: $('#nameSchoolForm').val(),
-                emailFestMessage: $('#emailSchoolForm').val(),
-                messageFestMessage: $('#commentsSchoolForm').val(),
-                termsFestMessage: $('#termsSchoolMessage').is(":checked"),
+                nameSchoolForm: $('#nameSchoolForm').val(),
+                emailSchoolForm: $('#emailSchoolForm').val(),
+                commentsSchoolForm: $('#commentsSchoolForm').val(),
+                termsSchoolMessage: $('#termsSchoolMessage').is(":checked"),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
                 action: 'post'
             },
