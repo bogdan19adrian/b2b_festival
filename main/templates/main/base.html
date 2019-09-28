@@ -18,6 +18,11 @@
     <link type="text/css" href={% static '/main/assets/css/bootstrap.min.css' %} rel="stylesheet"/>
     <link type="text/css" href={% static '/main/assets/css/paper-kit.css' %} rel="stylesheet"/>
 
+        <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+            type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+            type="text/javascript" charset="utf-8"></script>
+
 </head>
 <body id="b2bhome" data-spy="scroll" data-target=".navbar" data-offset="50" class="landing-page sidebar-collapse">
 <!-- Navbar -->
@@ -108,32 +113,37 @@
 <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
 <script src={% static '/main/assets/js/paper-kit.js' %} type="text/javascript"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://js.api.here.com/v3/3.0/mapsjs-core.js"
-        type="text/javascript" charset="utf-8"></script>
-<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
-        type="text/javascript" charset="utf-8"></script>
+
 <script>
-    // Initialize the platform object:
+    // Instantiate a map and platform object:
     var platform = new H.service.Platform({
-        'app_id': 'ufiguo1Ypg6UQRcCEX4e',
-        'app_code': 'pzPilxS-fSY5Nm01JcqduA'
+        'apikey': ''
     });
-    var targetElement = document.getElementById('mapContainer');
 
-    // Get the default map types from the platform object:
-    var defaultLayers = platform.createDefaultLayers();
-
-    // Instantiate the map:
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
     var map = new H.Map(
         document.getElementById('mapContainer'),
-        defaultLayers.normal.map,
+        maptypes.vector.normal.map,
         {
-            zoom: 19,
-            center: {lat: 51.513807, lng: -0.127183}
+            zoom: 16,
+            center: {lng: 26.1068184, lat: 44.4737945}
         });
+    var svgMarkup = '<svg width="24" height="24" ' +
+        'xmlns="http://www.w3.org/2000/svg">' +
+        '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+        'height="22" /><text x="12" y="18" font-size="12pt" ' +
+        'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+        'fill="white"></text></svg>';
 
-    // Add the venue layer to the map:
-    map.addLayer(defaultLayers.venues);
+    // Create an icon, an object holding the latitude and longitude, and a marker:
+    var icon = new H.map.Icon(svgMarkup),
+        coords = {lat: 44.4737945, lng: 26.1068184},
+        marker = new H.map.Marker(coords, {icon: icon});
+
+    // Add the marker to the map and center the map at the location of the marker:
+    map.addObject(marker);
+    map.setCenter(coords);
 </script>
 <script>
     $(document).ready(function () {
@@ -242,18 +252,18 @@
             passType: pass_type,
             paymentOption: paymentOption
         };
-        $.post("{% url 'main:buyTickets' %}", data)
+        $.post("{% url 'main:buyTickets' %}", data);
         priceInEuro = null,
             priceInRon = null,
             email = null,
             firstName = null,
             lastName = null,
             pass_type = null,
-            paymentOption = null
+            paymentOption = null;
         document.getElementById("buyTickets").reset();
         $("#alertPricePayPal").removeClass("alert alert alert-danger");
         $("#alertPricePayPal").text("");
-         document.getElementById("buyTickets").reset();
+        document.getElementById("buyTickets").reset();
     });
 
     {#$(document).on('submit', '#contactFestival', function (e) {#}
