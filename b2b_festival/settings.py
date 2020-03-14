@@ -24,7 +24,7 @@ SECRET_KEY = 'i$eduvt!z^-b&oj6w06)6(55agr&$qz!*jbyw!uzp0r3$ih(2i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-3-120-129-151.eu-central-1.compute.amazonaws.com', '127.0.0.1']
+ALLOWED_HOSTS = ['dekadanceacademy.ro', '127.0.0.1']
 
 # Application definition
 
@@ -83,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': 'db.cnf',
+            'read_default_file': '/home/ubuntu/db-msql.cnf',
         },
     }
 }
