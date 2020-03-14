@@ -128,7 +128,7 @@
             filter: grayscale(100%);
         }
 
-        .navbar {
+        .navbar-dsch {
             font-family: Montserrat, sans-serif;
             margin-bottom: 0;
             background-color: #2d2d30;
@@ -138,20 +138,20 @@
             opacity: 0.9;
         }
 
-        .navbar li a, .navbar .navbar-brand {
+        .navbar-dsch li a, .navbar-dsch .navbar-dsch-brand {
             color: #d5d5d5 !important;
         }
 
-        .navbar-nav li a:hover {
+        .navbar-dsch-nav li a:hover {
             color: #fff !important;
         }
 
-        .navbar-nav li.active a {
+        .navbar-dsch-nav li.active a {
             color: #fff !important;
             background-color: #29292c !important;
         }
 
-        .navbar-default .navbar-toggle {
+        .navbar-dsch-default .navbar-dsch-toggle {
             border-color: transparent;
         }
 
@@ -198,21 +198,22 @@
 
     <!--     Fonts and icons     -->
     <link type="text/css" href={% static '/dance_school/assets/css/pe-icon-7-stroke.css' %} rel="stylesheet"/>
-    <link type='text/css' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link type='text/css' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+          rel="stylesheet"/>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:700,100,400|Roboto:400,700|Playfair+Display+SC:400,700'
           rel='stylesheet' type='text/css'>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar-dsch navbar-dsch-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'main:homepage' %}">go back to B2B</a>
+            {#            <button type="button" class="navbar-dsch-toggle" data-toggle="collapse" data-target="#myNavbar">#}
+            {#                <span class="icon-bar"></span>#}
+            {#                <span class="icon-bar"></span>#}
+            {#                <span class="icon-bar"></span>#}
+            {#            </button>#}
+            {#            <a class="navbar-brand" href="{% url 'main:homepage' %}">go back to B2B</a>#}
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -225,14 +226,14 @@
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
                        href="https://www.facebook.com/dekadanceacademy/" target="_blank">
                         <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
+                        <p class="d-lg-none"></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
                        href="https://www.instagram.com/dekadanceacademyoficial/" target="_blank">
                         <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
+                        <p class="d-lg-none"></p>
                     </a>
                 </li>
             </ul>
@@ -275,10 +276,7 @@
                 <div class="card_hs" style="max-width: 420px">
                     <img src="/static/dance_school/assets/img/bachata.png" style="max-width: 420px">
                     <div class="header">
-                        <button type="button" class="btn btn-modern">
-                            <h6 class="label label-danger">Learn More</h6>
-                        </button>
-                        <a href="{% url 'main:homepage' %}"></a>
+                        <a role="button" class="btn btn-danger" href="{% url 'main:homepage' %}">Learn More</a>
                     </div>
 
 
@@ -299,10 +297,7 @@
                 <div class="card_hs" style="max-width: 420px">
                     <img src="/static/dance_school/assets/img/salsa.png" style="max-width: 420px">
                     <div class="header">
-                        <button type="button" class="btn btn-modern">
-                            <h6 class="label label-danger">Learn More</h6>
-                        </button>
-                        <a  href="{% url 'main:homepage' %}"></a>
+                        <a role="button" class="btn btn-danger" href="{% url 'main:homepage' %}">Learn More</a>
                     </div>
 
                     <div class="content">
@@ -440,7 +435,7 @@
         $('[data-toggle="tooltip"]').tooltip();
 
         // Add smooth scrolling to all links in navbar + footer link
-        $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+        $(".navbar-dsch a, footer a[href='#myPage']").on('click', function (event) {
 
             // Make sure this.hash has a value before overriding default behavior
             if (this.hash !== "") {
@@ -479,7 +474,7 @@
         document.getElementById('mapContainer'),
         maptypes.vector.normal.map,
         {
-                zoom: 16,
+            zoom: 16,
             center: {lng: 26.0956167, lat: 44.4336465}
         });
     var svgMarkup = '<svg width="24" height="24" ' +
