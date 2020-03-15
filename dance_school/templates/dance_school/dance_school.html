@@ -331,7 +331,7 @@
             <p class="text-center">If you plan to start learning to dance latino<br> Here is our program</p>
             <div class="row text-center">
                 {% for days in dayProgram %}
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="thumbnail">
                             <h3 style="color: #0b1011"><strong>{{ days.program_day }}</strong></h3>
                             {% for obj in days.programinterval_set.all %}
