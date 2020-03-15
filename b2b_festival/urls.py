@@ -20,10 +20,15 @@ from django.urls import path, include
 
 from b2b_festival import settings
 
+# urlpatterns = [
+#     path("", include('main.urls')),
+#     path('admin/', admin.site.urls),
+#     path("dance_school/", include('dance_school.urls')),
+# ]
 urlpatterns = [
-    path("", include('main.urls')),
+    path("", include('dance_school.urls')),
     path('admin/', admin.site.urls),
-    path("dance_school/", include('dance_school.urls')),
+    path("b2b/", include('main.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:
