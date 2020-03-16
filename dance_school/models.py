@@ -59,6 +59,7 @@ class Carousel(models.Model):
     carousel_title = models.CharField(max_length=200)
     carousel_published = models.DateTimeField('date published')
     carousel_image = models.ImageField(upload_to='images/')
+    carousel_order = models.IntegerField()
 
     def __str__(self):
         return self.carousel_title
