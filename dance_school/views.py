@@ -11,7 +11,7 @@ def dance_school(request):
     return render(request=request,
                   template_name='dance_school/dance_school.html',
                   context={
-                      "carousel": Carousel.objects.all,
+                      "carousel": Carousel.objects.order_by('carousel_order'),
                       "dayProgram": DayProgram.objects.all,
                       "contact": Contact.objects.last(),
                       "instructor": Instructor.objects.all,
