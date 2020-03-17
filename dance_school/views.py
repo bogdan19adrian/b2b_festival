@@ -6,7 +6,13 @@ from common.MailSenderWrapper import MailSenderWrapper
 from common.common import validate_email
 from dance_school.models import Carousel, DayProgram, Contact, Instructor, ProgramInterval, About
 
+from django.views.decorators.vary import vary_on_headers
 
+from django.views.decorators.cache import cache_control
+
+
+@cache_control(private=True, max_age=3600)
+@vary_on_headers('User-Agent')
 def dance_school(request):
     return render(request=request,
                   template_name='dance_school/dance_school.html',

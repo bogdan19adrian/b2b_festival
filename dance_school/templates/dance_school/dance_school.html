@@ -313,9 +313,9 @@
             <p><em>We love to dance! And we love to teach dancing</em></p>
             <p>{{ about.about_description }}</p>
             <br>
-            <div class="row">
+            <div class="row justify-content-center">
                 {% for instructor in instructor %}
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 ">
                         <p class="text-center"><strong>{{ instructor.instructor_name }}</strong></p><br>
                         <a href="#demo{{ forloop.counter }}" data-toggle="collapse">
                             <img src="{{ instructor.instructor_image.url }}" class="img-circle person" alt="Random Name"
