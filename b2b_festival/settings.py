@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['dekadanceacademy.ro', '127.0.0.1']
 INSTALLED_APPS = [
     'main.apps.MainConfig',
     'dance_school.apps.DanceSchoolConfig',
+    'dda_blog.apps.DdaBlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,7 +95,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/home/ubuntu/db-msql.cnf',
+            'read_default_file': 'db.cnf',
         },
     }
 }
