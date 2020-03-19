@@ -174,7 +174,16 @@ textarea {
     .navbar-brand {
         font-size: 12px !important;
     }
+
     .navbar {
         font-size: 11px !important;
+    }
+
+    .navbar-collapse {
+        background-color: #312f2f !important;
+    }
+
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+        border-color: transparent;
     }
 }
