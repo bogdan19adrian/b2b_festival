@@ -94,7 +94,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/home/ubuntu/db-msql.cnf',
+            'read_default_file': 'db.cnf',
         },
     }
 }
