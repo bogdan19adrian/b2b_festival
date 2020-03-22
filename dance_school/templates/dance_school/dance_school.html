@@ -39,8 +39,9 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#festivals">OUR FESTIVALS</a></li>
+                <li><a href="#festivals">ABOUT</a></li>
                 <li><a href="#instructors">INSTRUCTORS</a></li>
+                <li><a href="#festivals">OUR FESTIVALS</a></li>
                 <li><a href="#program">PROGRAM</a></li>
                 <li><a href="#location">LOCATION</a></li>
                 <li><a href="#contact">CONTACT</a></li>
@@ -90,6 +91,39 @@
     </div>
 </div>
 {#festivals#}
+
+
+<div id="about" class="bg-1 text-center">
+    <div class="container text-center">
+        <h3>{{ about.about_title }}</h3>
+        <br>
+        <p><em>We love to dance! And we love to teach dancing</em></p>
+        <p><em>Salsa LA / ON 2 | Bachata | Rueda de Casino | Cha - Cha</em></p>
+        <p>{{ about.about_description }}</p>
+        <br>
+    </div>
+</div>
+
+<div id="instructors" class="section text-center">
+    <div class="container text-center">
+        <h4>Our Instructors</h4>
+        <div class="row justify-content-center">
+            {% for instructor in instructor %}
+                <div class="col-sm-4 ">
+                    <p class="text-center"><strong>{{ instructor.instructor_name }}</strong></p><br>
+                    <a href="#demo{{ forloop.counter }}" data-toggle="collapse">
+                        <img src="{{ instructor.instructor_image.url }}" class="img-circle person" alt="Random Name"
+                             width="255" height="255">
+                    </a>
+                    <div id="demo{{ forloop.counter }}" class="collapse">
+                        <p>{{ instructor.instructor_description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 <div id="festivals">
     <div class="container text-center">
         <div class="title">
@@ -138,110 +172,87 @@
             </div>
         </div>
     </div>
+</div>
 
-    <div id="instructors" class="section text-center">
-        <div class="container text-center">
-            <h3>{{ about.about_title }}</h3>
-            <p><em>We love to dance! And we love to teach dancing</em></p>
-            <p><em>Salsa LA / ON 2 | Bachata | Rueda de Casino | Cha - Cha</em></p>
-            <p>{{ about.about_description }}</p>
-            <br>
-            <h4>Our Instructors</h4>
-            <div class="row justify-content-center">
-                {% for instructor in instructor %}
-                    <div class="col-sm-4 ">
-                        <p class="text-center"><strong>{{ instructor.instructor_name }}</strong></p><br>
-                        <a href="#demo{{ forloop.counter }}" data-toggle="collapse">
-                            <img src="{{ instructor.instructor_image.url }}" class="img-circle person" alt="Random Name"
-                                 width="255" height="255">
-                        </a>
-                        <div id="demo{{ forloop.counter }}" class="collapse">
-                            <p>{{ instructor.instructor_description }}</p>
-                        </div>
+<div id="program" class="bg-1">
+    <div class="container">
+        <h3 class="text-center">PROGRAM</h3>
+        <p class="text-center">If you plan to start learning to dance latino<br> Here is our program</p>
+        <div class="row text-center">
+            {% for days in dayProgram %}
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <h3 style="color: #0b1011"><strong>{{ days.program_day }}</strong></h3>
+                        {% for obj in days.programinterval_set.all %}
+                            <li>{{ obj.group_type }}, {{ obj.hour_interval }}</li>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 
-    <div id="program" class="bg-1">
-        <div class="container">
-            <h3 class="text-center">PROGRAM</h3>
-            <p class="text-center">If you plan to start learning to dance latino<br> Here is our program</p>
-            <div class="row text-center">
-                {% for days in dayProgram %}
-                    <div class="col-sm-6">
-                        <div class="thumbnail">
-                            <h3 style="color: #0b1011"><strong>{{ days.program_day }}</strong></h3>
-                            {% for obj in days.programinterval_set.all %}
-                                <li>{{ obj.group_type }}, {{ obj.hour_interval }}</li>
-                            {% endfor %}
+</div>
+
+<div id="location" class="bg-1">
+    <div class="container text-center">
+        <h3>LOCATION</h3>
+        <div style="width: 100%; height: 480px" id="mapContainer"></div>
+    </div>
+</div>
+
+<div id="contact">
+    <div class="container">
+        <h3 class="text-center">Contact</h3>
+        <p class="text-center"><em>We LOVE to DANCE and TEACH</em></p>
+        <form method="POST" id="contactSchool" class="contact-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <p><span class="glyphicon glyphicon-user"></span>Person of Contact: {{ contact.contact_name }}
+                    </p>
+                    <p><span class="glyphicon glyphicon-phone"></span>Phone: {{ contact.contact_phone_number }}</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span>Address: {{ contact.contact_address }}</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="nameSchoolForm" name="name" placeholder="Name"
+                                   type="text"
+                                   required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="emailSchoolForm" name="email" placeholder="Email"
+                                   type="email"
+                                   required>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
-    <div id="location" class="bg-1">
-        <div class="container text-center">
-            <h3>LOCATION</h3>
-            <div style="width: 100%; height: 480px" id="mapContainer"></div>
-        </div>
-    </div>
-
-    <div id="contact">
-        <div class="container">
-            <h3 class="text-center">Contact</h3>
-            <p class="text-center"><em>We LOVE to DANCE and TEACH</em></p>
-            <form method="POST" id="contactSchool" class="contact-form">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><span class="glyphicon glyphicon-user"></span>Person of Contact: {{ contact.contact_name }}
-                        </p>
-                        <p><span class="glyphicon glyphicon-phone"></span>Phone: {{ contact.contact_phone_number }}</p>
-                        <p><span class="glyphicon glyphicon-envelope"></span>Address: {{ contact.contact_address }}</p>
+                    <textarea class="form-control" id="commentsSchoolForm" name="comments" placeholder="Message"
+                              rows="5"></textarea>
+                    <br>
+                    <div class="row">
+                        <div id="errorMsgFest"></div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="nameSchoolForm" name="name" placeholder="Name"
-                                       type="text"
-                                       required>
-                            </div>
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="emailSchoolForm" name="email" placeholder="Email"
-                                       type="email"
-                                       required>
-                            </div>
-                        </div>
-                        <textarea class="form-control" id="commentsSchoolForm" name="comments" placeholder="Message"
-                                  rows="5"></textarea>
-                        <br>
-                        <div class="row">
-                            <div id="errorMsgFest"></div>
-                        </div>
-                        <div class="row">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" id="termsSchoolMessage" type="checkbox" value="">
-                                    Accept Terms & Conditions
-                                    <span class="form-check-sign">
+                    <div class="row">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" id="termsSchoolMessage" type="checkbox" value="">
+                                Accept Terms & Conditions
+                                <span class="form-check-sign">
                                              <span class="check"></span>
                                       </span>
-                                </label>
-                            </div>
+                            </label>
                         </div>
-            </form>
-            <div class="row">
-                <div class="col-md-12 form-group">
-                    <button id="submitSchoolMessage" class="btn pull-right" type="submit">Send</button>
-                </div>
+                    </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <button id="submitSchoolMessage" class="btn pull-right" type="submit">Send</button>
             </div>
         </div>
     </div>
 </div>
+
 </div>
 <!-- Footer -->
 <footer class="text-center">
@@ -355,3 +366,4 @@
 </script>
 </body>
 </html>
+
