@@ -4,7 +4,8 @@
     <!-- Theme Made By www.w3schools.com - No Copyright -->
     <title>DekaDance Academy</title>
     <meta charset="utf-8">
-    <meta name="description" content="Web site for DekaDance Academy, a dance school for latino style in Bucharest.
+    {% load static %}
+    <meta name="description" content="DekaDance Academy`s officcial page. DDA is  a dance school for latino style in Bucharest.
         Styles you can learn here: bachata, salsa, kizomba, rueda de casino etc.
         Great instructors and the best location">
     <title>DekaDance Academy</title>
@@ -21,179 +22,7 @@
             type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
             type="text/javascript" charset="utf-8"></script>
-    <style>
-        body {
-            font: 400 15px/1.8 Lato, sans-serif;
-            color: #777;
-        }
-
-        h3, h4 {
-            margin: 10px 0 30px 0;
-            letter-spacing: 10px;
-            font-size: 20px;
-            color: #111;
-        }
-
-        .person {
-            border: 10px solid transparent;
-            margin-bottom: 25px;
-            width: 80%;
-            height: 80%;
-            opacity: 0.7;
-        }
-
-        .person:hover {
-            border-color: #f1f1f1;
-        }
-
-        .carousel-inner img {
-        {#-webkit-filter: grayscale(90%);#}{#filter: grayscale(90%); /* make all photos black and white */#} width: 100%; /* Set width to 100% */
-            margin: auto;
-        }
-
-        .carousel-caption h3 {
-            color: #fff !important;
-        }
-
-        @media (max-width: 600px) {
-            .carousel-caption {
-                display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-            }
-        }
-
-        .bg-1 {
-            background: #2d2d30;
-            color: #bdbdbd;
-        }
-
-        .bg-1 h3 {
-            color: #fff;
-        }
-
-        .bg-1 p {
-            font-style: italic;
-        }
-
-        .list-group-item:first-child {
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
-        }
-
-        .list-group-item:last-child {
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        .thumbnail {
-            padding: 0 0 15px 0;
-            border: none;
-            border-radius: 0;
-        }
-
-        .thumbnail p {
-            margin-top: 15px;
-            color: #555;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #f1f1f1;
-            border-radius: 0;
-            transition: .2s;
-        }
-
-        .btn:hover, .btn:focus {
-            border: 1px solid #333;
-            background-color: #fff;
-            color: #000;
-        }
-
-        .modal-header, h4, .close {
-            background-color: #333;
-            color: #fff !important;
-            text-align: center;
-            font-size: 30px;
-        }
-
-        .modal-header, .modal-body {
-            padding: 40px 50px;
-        }
-
-        .nav-tabs li a {
-            color: #777;
-        }
-
-        #googleMap {
-            width: 100%;
-            height: 400px;
-            -webkit-filter: grayscale(100%);
-            filter: grayscale(100%);
-        }
-
-        .navbar {
-            font-family: Montserrat, sans-serif;
-            margin-bottom: 0;
-            background-color: #2d2d30;
-            border: 0;
-            font-size: 11px !important;
-            letter-spacing: 4px;
-            opacity: 0.9;
-        }
-
-        .navbar li a, .navbar .navbar-brand {
-            color: #d5d5d5 !important;
-        }
-
-        .navbar-nav li a:hover {
-            color: #fff !important;
-        }
-
-        .navbar-nav li.active a {
-            color: #fff !important;
-            background-color: #29292c !important;
-        }
-
-        .navbar-default .navbar-toggle {
-            border-color: transparent;
-        }
-
-        .open .dropdown-toggle {
-            color: #fff;
-            background-color: #555 !important;
-        }
-
-        .dropdown-menu li a {
-            color: #000 !important;
-        }
-
-        .dropdown-menu li a:hover {
-            background-color: red !important;
-        }
-
-        footer {
-            background-color: #2d2d30;
-            color: #f5f5f5;
-            padding: 32px;
-        }
-
-        footer a {
-            color: #f5f5f5;
-        }
-
-        footer a:hover {
-            color: #777;
-            text-decoration: none;
-        }
-
-        .form-control {
-            border-radius: 0;
-        }
-
-        textarea {
-            resize: none;
-        }
-    </style>
+    <link type="text/css" href={% static '/dance_school/assets/css/dance_school.css' %} rel="stylesheet"/>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -205,13 +34,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'dance_School:dance_school' %}" title="Deka Dance Academy">Deka Dance Academy</a>
+            <a class="navbar-brand" href="{% url 'dance_School:dance_school' %}" title="Deka Dance Academy">Deka Dance
+                Academy</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#festivals">OUR FESTIVALS</a></li>
-                <li><a href="{% url 'dda_blog:dda_blog' %}">NEWS</a></li>
+                <li><a href="#about">ABOUT</a></li>
                 <li><a href="#instructors">INSTRUCTORS</a></li>
+                <li><a href="#festivals">OUR FESTIVALS</a></li>
                 <li><a href="#program">PROGRAM</a></li>
                 <li><a href="#location">LOCATION</a></li>
                 <li><a href="#contact">CONTACT</a></li>
@@ -261,158 +91,172 @@
     </div>
 </div>
 {#festivals#}
+
+
+<div id="about" class="bg-1 text-center">
+    <div class="container text-center">
+        <h3>{{ about.about_title }}</h3>
+        <br>
+        <p><em>We love to dance! And we love to teach dancing</em></p>
+        <p><em>Salsa LA / ON 2 | Bachata | Rueda de Casino | Cha - Cha</em></p>
+        <p>{{ about.about_description }}</p>
+        <br>
+    </div>
+</div>
+
+<div id="instructors" class="section text-center">
+    <div class="container text-center">
+        <h4>Our Instructors</h4>
+        <div class="row justify-content-center">
+            {% for instructor in instructor %}
+                <div class="col-sm-4 ">
+                    <p class="text-center"><strong>{{ instructor.instructor_name }}</strong></p><br>
+                    <a href="#demo{{ forloop.counter }}" data-toggle="collapse">
+                        <img src="{{ instructor.instructor_image.url }}" class="img-circle person" alt="Random Name"
+                             width="255" height="255">
+                    </a>
+                    <div id="demo{{ forloop.counter }}" class="collapse">
+                        <p>{{ instructor.instructor_description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 <div id="festivals">
     <div class="container text-center">
-        <div class="title">
-            <h3>Our events</h3>
-        </div>
+        <h3 class="text-center">OUR EVENTS</h3>
         <div class="card-group">
 
             <div class="card-group">
                 <div class="row">
-                    <div class="card col-md-6" style="border:1px">
+                    <div class="card col-md-6">
                         <img src="/media/images/bachata.png" class="bd-placeholder-img card-img-top" width="100%"
                              height="180"
                              xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap"
-                             preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title>
+                             preserveAspectRatio="xMidYMid slice" role="img">
+                        <title>Bachata Takes Over Bucharest</title>
                         <rect width="100%" height="100%" fill="#868e96"/>
                         <text x="50%" y="50%" fill="#dee2e6" dy=".3em">BACHATA</text>
                         </img>
                         <div class="card-body">
-                            <h4 class="card-title">Bachata Takes Over Bucharest / - 2020</h4>
-                            <p class="card-text">Don`t miss it! In April BtoB Dance Festival is returning to
-                                bucharest</p>
-                        </div>
-                        <div class="card-footer">
-                            <a role="button" class="btn btn-danger" href="{% url 'main:homepage' %}">Learn More</a>
+                            <a href="{% url 'main:homepage' %}">
+                                <h2
+                                        class="card-title"><p>Bachata Takes Over
+                                    Bucharest</p>
+                                    <p>BtoB Dance Festival</p></h2>
+                            </a>
+                            <p class="card-text">
+                            <h3>Don`t miss it! In April BtoB Dance Festival is returning to
+                                Bucharest</h3></p>
                         </div>
                     </div>
                     <div class="card col-md-6">
                         <img src="/media/images/salsa.png" class="bd-placeholder-img card-img-top" width="100%"
                              height="180"
                              xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image cap"
-                             preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title>
+                             preserveAspectRatio="xMidYMid slice" role="img">
+                        <title>Bucharest Salsa Festival - BSF</title>
                         <rect width="100%" height="100%" fill="#868e96"/>
                         <text x="50%" y="50%" fill="#dee2e6" dy=".3em">SALSA</text>
                         </img>
 
                         <div class="card-body">
-                            <h4 class="card-title">Salsa Festival - 2020</h4>
-                            <p class="card-text">Come Join us in October for the best salsa festival in town</p>
-                        </div>
-                        <div class="card-footer">
-                            <a role="button" class="btn btn-danger"
-                               href="https://www.facebook.com/bucharestsalsafestivaloficial/">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="instructors" class="section text-center">
-        <div class="container text-center">
-            <h3>{{ about.about_title }}</h3>
-            <p><em>We love to dance! And we love to teach dancing</em></p>
-            <p><em>Salsa LA / ON 2 | Bachata | Rueda de Casino | Cha - Cha</em></p>
-            <p>{{ about.about_description }}</p>
-            <br>
-            <h4>Our Instructors</h4>
-            <div class="row justify-content-center">
-                {% for instructor in instructor %}
-                    <div class="col-sm-4 ">
-                        <p class="text-center"><strong>{{ instructor.instructor_name }}</strong></p><br>
-                        <a href="#demo{{ forloop.counter }}" data-toggle="collapse">
-                            <img src="{{ instructor.instructor_image.url }}" class="img-circle person" alt="Random Name"
-                                 width="255" height="255">
-                        </a>
-                        <div id="demo{{ forloop.counter }}" class="collapse">
-                            <p>{{ instructor.instructor_description }}</p>
+                            <a href="https://www.facebook.com/bucharestsalsafestivaloficial/">
+                                <h2 class="card-title">
+                                    <p>Bucharest Salsa Festival</p>
+                                    <p>BSF</p></h2>
+                            </a>
+                            <p class="card-text">
+                            <h3>Come Join us in October for the best salsa festival in town</h3></p>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-
-    <div id="program" class="bg-1">
-        <div class="container">
-            <h3 class="text-center">PROGRAM</h3>
-            <p class="text-center">If you plan to start learning to dance latino<br> Here is our program</p>
-            <div class="row text-center">
-                {% for days in dayProgram %}
-                    <div class="col-sm-6">
-                        <div class="thumbnail">
-                            <h3 style="color: #0b1011"><strong>{{ days.program_day }}</strong></h3>
-                            {% for obj in days.programinterval_set.all %}
-                                <li>{{ obj.group_type }}, {{ obj.hour_interval }}</li>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
-    <div id="location" class="bg-1">
-        <div class="container text-center">
-            <h3>LOCATION</h3>
-            <div style="width: 100%; height: 480px" id="mapContainer"></div>
-        </div>
-    </div>
-
-    <div id="contact">
-        <div class="container">
-            <h3 class="text-center">Contact</h3>
-            <p class="text-center"><em>We LOVE to DANCE and TEACH</em></p>
-            <form method="POST" id="contactSchool" class="contact-form">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-4">
-                        <p><span class="glyphicon glyphicon-user"></span>Person of Contact: {{ contact.contact_name }}
-                        </p>
-                        <p><span class="glyphicon glyphicon-phone"></span>Phone: {{ contact.contact_phone_number }}</p>
-                        <p><span class="glyphicon glyphicon-envelope"></span>Address: {{ contact.contact_address }}</p>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="row">
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="nameSchoolForm" name="name" placeholder="Name"
-                                       type="text"
-                                       required>
-                            </div>
-                            <div class="col-sm-6 form-group">
-                                <input class="form-control" id="emailSchoolForm" name="email" placeholder="Email"
-                                       type="email"
-                                       required>
-                            </div>
-                        </div>
-                        <textarea class="form-control" id="commentsSchoolForm" name="comments" placeholder="Message"
-                                  rows="5"></textarea>
-                        <br>
-                        <div class="row">
-                            <div id="errorMsgFest"></div>
-                        </div>
-                        <div class="row">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" id="termsSchoolMessage" type="checkbox" value="">
-                                    Accept Terms & Conditions
-                                    <span class="form-check-sign">
-                                             <span class="check"></span>
-                                      </span>
-                                </label>
-                            </div>
-                        </div>
-            </form>
-            <div class="row">
-                <div class="col-md-12 form-group">
-                    <button id="submitSchoolMessage" class="btn pull-right" type="submit">Send</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div id="program" class="bg-1">
+    <div class="container">
+        <h3 class="text-center">PROGRAM</h3>
+        <p class="text-center">If you plan to start learning to dance latino<br> Here is our program</p>
+        <div class="row text-center">
+            {% for days in dayProgram %}
+                <div class="col-sm-6">
+                    <div class="thumbnail">
+                        <h3 style="color: #0b1011"><strong>{{ days.program_day }}</strong></h3>
+                        {% for obj in days.programinterval_set.all %}
+                            <li>{{ obj.group_type }}, {{ obj.hour_interval }}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+<div id="location" class="bg-1">
+    <div class="container text-center">
+        <h3>LOCATION</h3>
+        <div style="width: 100%; height: 480px" id="mapContainer"></div>
+    </div>
+</div>
+
+<div id="contact">
+    <div class="container">
+        <h3 class="text-center">CONTACT</h3>
+        <p class="text-center"><em>We LOVE to DANCE and TEACH</em></p>
+        <form method="POST" id="contactSchool" class="contact-form">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-4">
+                    <p><span class="glyphicon glyphicon-user"></span>Person of Contact: {{ contact.contact_name }}
+                    </p>
+                    <p><span class="glyphicon glyphicon-phone"></span>Phone: {{ contact.contact_phone_number }}</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span>Address: {{ contact.contact_address }}</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="nameSchoolForm" name="name" placeholder="Name"
+                                   type="text"
+                                   required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="emailSchoolForm" name="email" placeholder="Email"
+                                   type="email"
+                                   required>
+                        </div>
+                    </div>
+                    <textarea class="form-control" id="commentsSchoolForm" name="comments" placeholder="Message"
+                              rows="5"></textarea>
+                    <br>
+                    <div class="row">
+                        <div id="errorMsgFest"></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" id="termsSchoolMessage" type="checkbox" value="">
+                                Accept Terms & Conditions
+                                <span class="form-check-sign">
+                                             <span class="check"></span>
+                                      </span>
+                            </label>
+                        </div>
+                    </div>
+        </form>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <button id="submitSchoolMessage" class="btn pull-right" type="submit">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 <!-- Footer -->
 <footer class="text-center">
@@ -526,3 +370,4 @@
 </script>
 </body>
 </html>
+
