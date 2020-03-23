@@ -3,5 +3,65 @@
 {% block content %}
 
 
+    <!--================ Start Blog Post Area =================-->
+    <section class="blog-post-area section-margin">
+        <div class="container">
 
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="main_blog_details">
+                        <img class="img-responsive" src={{ post.imageURL }} alt="">
+                        <h2>{{ post.title }}</h2>
+                        <br>
+                        <a class="button" href="{% url 'dda_blog:dekadance_blog' %}">BACK <i
+                                class="ti-arrow-left"></i></a>
+                        <div class="user_details">
+                            <div class="float-right mt-sm-0 mt-3">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h5>{{ post.author }}</h5>
+                                        <p>{{ post.created_on | date:"M d, Y" }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            {{ post.content }}
+                        </div>
+                    </div>
+                    <a class="button" href="{% url 'dda_blog:dekadance_blog' %}">BACK <i
+                            class="ti-arrow-left"></i></a>
+                </div>
+                <!-- Start Blog Post Siddebar -->
+                <div class="col-lg-4 sidebar-widgets">
+                    <div class="widget-wrap">
+                        <div class="single-sidebar-widget popular-post-widget">
+                            <h4 class="single-sidebar-widget__title">Latest News</h4>
+                            <div class="popular-post-list">
+                                {% for post in post_list %}
+                                    <div class="single-post-list">
+                                        <div class="thumb">
+                                            <img class="img-thumbnail rounded-0" src={{ post.imageURL }} alt="">
+                                            <ul class="thumb-info">
+                                                <li>{{ post.author }}</li>
+                                                <li>{{ post.created_on | date:"M d, Y" }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="details mt-20">
+                                            <a href="{% url 'dda_blog:post_detail' post.slug %}">
+                                                <h3>{{ post.title }}</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Blog Post Siddebar -->
+        </div>
+    </section>
+    <!--================ End Blog Post Area =================-->
 {% endblock %}

@@ -41,4 +41,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def return_full_name(self):
+        return self.author.get_full_name()
+
 
