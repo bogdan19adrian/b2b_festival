@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load tinymce_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DekaDance Academy - Blog</title>
     {% load static %}
-    <link rel="icon" href="../../static/dda_blog/assets/img/Fevicon.png" type="image/png">
-
+    <link rel="icon" href="../../static/dda_blog/assets/img/logo/logo2.png" type="image/png">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector: 'textarea', mode: "textareas", theme: "advanced"});</script>
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css"
@@ -41,7 +43,7 @@
             <div class="hero-banner">
                 <div class="hero-banner__content">
                     <h1>Deka Dance Academy</h1>
-                    <h2>Blog about</h2>
+                    <h2>a BLOG about</h2>
                     <h3>School news</h3>
                     <h3>Dance Opinions</h3>
                 </div>
@@ -71,11 +73,6 @@
     </footer>
     <!--================ End Footer Area =================-->
 </main>
-<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/mail-script.js"></script>
-<script src="js/main.js"></script>
+<script src="../../static/dda_blog/assets/js/main.js" type=""></script>
 </body>
 </html>

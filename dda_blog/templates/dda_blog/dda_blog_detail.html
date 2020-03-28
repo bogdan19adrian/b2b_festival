@@ -11,7 +11,7 @@
                 <div class="col-lg-8">
                     <div class="main_blog_details">
                         <img class="img-responsive" src={{ post.imageURL }} alt="">
-                        <h2>{{ post.title }}</h2>
+                        <h2 class="blog-title">{{ post.title }}</h2>
                         <br>
                         <a class="button" href="{% url 'dda_blog:dekadance_blog' %}">BACK <i
                                 class="ti-arrow-left"></i></a>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div>
-                            {{ post.content }}
+                            {{ post.content | safe }}
                         </div>
                     </div>
                     <a class="button" href="{% url 'dda_blog:dekadance_blog' %}">BACK <i
@@ -36,7 +36,7 @@
                 <div class="col-lg-4 sidebar-widgets">
                     <div class="widget-wrap">
                         <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="single-sidebar-widget__title">Latest News</h4>
+                            <h4 class="single-sidebar-widget__title">Latest Blog Posts</h4>
                             <div class="popular-post-list">
                                 {% for post in post_list %}
                                     <div class="single-post-list">

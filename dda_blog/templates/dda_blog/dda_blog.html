@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    {% for post in post_list %}
+                    {% for post in page_obj %}
                         <div class="single-recent-blog-post">
                             <div class="thumb">
-                                <img class="img-responsive" src={{ post.imageURL}} alt="">
+                                <img class="img-responsive" src={{ post.imageURL }} alt="">
                                 <ul class="thumb-info">
                                     <li><i class="ti-user"></i>{{ post.author }}</li>
                                     <li><i class="ti-notepad"></i>{{ post.created_on }}</li>
@@ -17,83 +17,92 @@
                             </div>
                             <div class="details mt-20">
                                 <a href="{% url 'dda_blog:post_detail' post.slug %}">
-                                    <h3>{{ post.title }}</h3>
+                                    <h2 class="blog-title">{{ post.title }}</h2>
                                 </a>
                                 <p class="tag-list-inline">Tag: {{ post.category }}</p>
-                                <p>{{ post.content|slice:":600" }}</p>
+                                <p class="tiny_class">{{ post.content|slice:":600" | safe }}</p>
                                 <a class="button" href="{% url 'dda_blog:post_detail' post.slug %}">Read More <i
                                         class="ti-arrow-right"></i></a>
                             </div>
-                        <hr>
+                            <hr>
                         </div>
                     {% endfor %}
                     <div class="row">
                         <div class="col-lg-12">
                             <nav class="blog-pagination justify-content-center d-flex">
                                 <ul class="pagination">
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Previous">
-                                  <span aria-hidden="true">
-                                      <i class="ti-angle-left"></i>
-                                  </span>
-                                        </a>
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a href="?page={{ page_obj.previous_page_number }}" class="page-link"
+                                               aria-label="Previous">
+                                          <span aria-hidden="true">
+                                              <i class="ti-angle-left"></i>
+                                          </span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    <li class="page-item active"><a href="#" class="page-link">{{ page_obj.number }}</a>
                                     </li>
-                                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Next">
-                                  <span aria-hidden="true">
-                                      <i class="ti-angle-right"></i>
-                                  </span>
-                                        </a>
-                                    </li>
+
+
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link"
+                                               aria-label="Next">
+                                          <span aria-hidden="true">
+                                              <i class="ti-angle-right"></i>
+                                          </span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </nav>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- Start Blog Post Siddebar -->
+            <div class="col-lg-4 sidebar-widgets">
+                <div class="widget-wrap">
+                    {#                        <div class="single-sidebar-widget newsletter-widget">#}
+                    {#                            <h4 class="single-sidebar-widget__title">Newsletter</h4>#}
+                    {#                            <div class="form-group mt-30">#}
+                    {#                                <div class="col-autos">#}
+                    {#                                    <input type="text" class="form-control" id="inlineFormInputGroup"#}
+                    {#                                           placeholder="Enter email" onfocus="this.placeholder = ''"#}
+                    {#                                           onblur="this.placeholder = 'Enter email'">#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <button class="bbtns d-block mt-20 w-100">Subcribe</button>#}
+                    {#                        </div>#}
 
-                <!-- Start Blog Post Siddebar -->
-                <div class="col-lg-4 sidebar-widgets">
-                    <div class="widget-wrap">
-{#                        <div class="single-sidebar-widget newsletter-widget">#}
-{#                            <h4 class="single-sidebar-widget__title">Newsletter</h4>#}
-{#                            <div class="form-group mt-30">#}
-{#                                <div class="col-autos">#}
-{#                                    <input type="text" class="form-control" id="inlineFormInputGroup"#}
-{#                                           placeholder="Enter email" onfocus="this.placeholder = ''"#}
-{#                                           onblur="this.placeholder = 'Enter email'">#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <button class="bbtns d-block mt-20 w-100">Subcribe</button>#}
-{#                        </div>#}
-
-                        <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="single-sidebar-widget__title">Latest News</h4>
-                            <div class="popular-post-list">
-                                {% for post in filtered_post_list %}
-                                    <div class="single-post-list">
-                                        <div class="thumb">
-                                            <img class="img-thumbnail rounded-0" src={{ post.imageURL }} alt="">
-                                            <ul class="thumb-info">
-                                                <li>{{ post.author }}</li>
-                                                <li>{{ post.created_on | date:"M d, Y"}}</li>
-                                            </ul>
-                                        </div>
-                                        <div class="details mt-20">
-                                            <a href="{% url 'dda_blog:post_detail' post.slug %}">
-                                                <h3>{{ post.title }}</h3>
-                                            </a>
-                                        </div>
+                    <div class="single-sidebar-widget popular-post-widget">
+                        <h4 class="single-sidebar-widget__title">Latest News</h4>
+                        <div class="popular-post-list">
+                            {% for post in filtered_post_list %}
+                                <div class="single-post-list">
+                                    <div class="thumb">
+                                        <img class="img-thumbnail rounded-0" src={{ post.imageURL }} alt="">
+                                        <ul class="thumb-info">
+                                            <li>{{ post.author }}</li>
+                                            <li>{{ post.created_on | date:"M d, Y" }}</li>
+                                        </ul>
                                     </div>
-                                    <hr>
-                                {% endfor %}
-                            </div>
+                                    <div class="details mt-20">
+                                        <a href="{% url 'dda_blog:post_detail' post.slug %}">
+                                            <h3>{{ post.title }}</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                            {% endfor %}
                         </div>
-
                     </div>
+
                 </div>
             </div>
+        </div>
             <!-- End Blog Post Siddebar -->
         </div>
     </section>
