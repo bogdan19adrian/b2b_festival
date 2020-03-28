@@ -16,7 +16,7 @@ from dda_blog.models import Post
 @cache_control(private=True, max_age=3600)
 @vary_on_headers('User-Agent')
 def dance_school(request):
-    queryset = Post.objects.last()
+    queryset = Post.objects.filter(status=1).last()
     return render(request=request,
                   template_name='dance_school/dance_school.html',
                   context={
