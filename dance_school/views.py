@@ -16,7 +16,7 @@ from dda_blog.models import Post
 @cache_control(private=True, max_age=3600)
 @vary_on_headers('User-Agent')
 def dance_school(request):
-    queryset = Post.objects.filter(status=1).order_by('-created_on')[0]
+    queryset = Post.objects.filter(status=1).order_by('-created_on').latest('created_on')
     return render(request=request,
                   template_name='dance_school/dance_school.html',
                   context={
