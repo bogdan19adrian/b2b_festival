@@ -169,6 +169,12 @@ footer a:hover {
 textarea {
     resize: none;
 }
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid rgba(0, 0, 0, 0.51) !important;
+}
 
 @media(max-width: 374px) {
     .navbar-brand {
