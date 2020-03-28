@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" type="text/javascript"></script>
 
     <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
             type="text/javascript" charset="utf-8"></script>
@@ -40,6 +40,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#about">ABOUT</a></li>
+                <li><a href="{% url 'dda_blog:dekadance_blog' %}">DDA BLOG</a></li>
                 <li><a href="#instructors">INSTRUCTORS</a></li>
                 <li><a href="#festivals">OUR FESTIVALS</a></li>
                 <li><a href="#program">PROGRAM</a></li>
@@ -93,7 +94,7 @@
 {#festivals#}
 
 
-<div id="about" class="bg-1 text-center">
+<div id="about" class="section text-center">
     <div class="container text-center">
         <h3>{{ about.about_title }}</h3>
         <br>
@@ -104,9 +105,32 @@
     </div>
 </div>
 
+<div id="about" class="bg-1 text-center">
+    <div class="container text-center">
+        <h3>LATEST BLOG POST</h3>
+        <br>
+
+        <div class="single-recent-blog-post">
+            <div class="details mt-20">
+                <a href="{% url 'dda_blog:post_detail' post.slug %}">
+                    <h2>{{ post.title }}</h2>
+                </a>
+                <p class="tag-list-inline">Tag: {{ post.category }}</p>
+                <div style="text-align: justify !important;">
+                    <p>{{ post.content|slice:":600" | safe }}</p>
+                </div>
+                <a class="button" href="{% url 'dda_blog:post_detail' post.slug %}">Read More <i
+                        class="ti-arrow-right"></i></a>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+
 <div id="instructors" class="section text-center">
     <div class="container text-center">
-        <h4>Our Instructors</h4>
+        <h3>OUR INSTRUCTORS</h3>
         <div class="row justify-content-center">
             {% for instructor in instructor %}
                 <div class="col-sm-4 ">
@@ -126,9 +150,7 @@
 
 <div id="festivals">
     <div class="container text-center">
-        <div class="title">
-            <h3>Our events</h3>
-        </div>
+        <h3 class="text-center">OUR EVENTS</h3>
         <div class="card-group">
 
             <div class="card-group">
@@ -209,7 +231,7 @@
 
 <div id="contact">
     <div class="container">
-        <h3 class="text-center">Contact</h3>
+        <h3 class="text-center">CONTACT</h3>
         <p class="text-center"><em>We LOVE to DANCE and TEACH</em></p>
         <form method="POST" id="contactSchool" class="contact-form">
             {% csrf_token %}

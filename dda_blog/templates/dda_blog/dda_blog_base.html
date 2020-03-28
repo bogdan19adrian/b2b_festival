@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load tinymce_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DekaDance Academy - Blog</title>
+    {% load static %}
+    <link rel="icon" href="../../static/dda_blog/assets/img/logo/logo2.png" type="image/png">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector: 'textarea', mode: "textareas", theme: "advanced"});</script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link type="text/css" href={% static '/dda_blog/assets/linericon/style.css' %} rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link type="text/css" href={% static '/dda_blog/assets/css/style.css' %} rel="stylesheet"/>
+</head>
+<body>
+<!--================Header Menu Area =================-->
+<nav class="navbar navbar-dark navbar-fixed-top blog-navbar">
+    <div class="container-fluid">
+        <div class="nav-header">
+            <a href="{% url 'dance_School:dance_school' %}">
+                <div class="logo-dda"></div>
+            </a>
+        </div>
+    </div>
+</nav>
+<!--================Header Menu Area =================-->
+
+<main class="site-main">
+    <!--================Hero Banner start =================-->
+    <section class="mb-30px">
+        <div class="container">
+            <div class="hero-banner">
+                <div class="hero-banner__content">
+                    <h1>Deka Dance Academy</h1>
+                    <h2>a BLOG about</h2>
+                    <h3>School news</h3>
+                    <h3>Dance Opinions</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Hero Banner end =================-->
+
+    {% block content %}
+        <!-- Content Goes here -->
+    {% endblock content %}
+
+    <!--================ Start Footer Area =================-->
+    <footer class="footer-area section-padding">
+        <div class="container">
+
+            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                <p class="footer-text m-0">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                    <a
+                            href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </footer>
+    <!--================ End Footer Area =================-->
+</main>
+<script src="../../static/dda_blog/assets/js/main.js" type=""></script>
+</body>
+</html>

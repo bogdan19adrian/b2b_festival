@@ -170,7 +170,7 @@ textarea {
     resize: none;
 }
 
-@media screen and (max-width: 374px) {
+@media(max-width: 374px) {
     .navbar-brand {
         font-size: 12px !important;
     }

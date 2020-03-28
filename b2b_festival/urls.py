@@ -23,12 +23,14 @@ from b2b_festival import settings
 # urlpatterns = [
 #     path("", include('main.urls')),
 #     path('admin/', admin.site.urls),
-#     path("dance_school/", include('dance_school.urls')),
+#     path("dda_blog/", include('dda_blog.urls')),
 # ]
 urlpatterns = [
     path("", include('dance_school.urls')),
     path('admin/', admin.site.urls),
     path("b2b/", include('main.urls')),
+    path("blog/", include('dda_blog.urls')),
+    path(r'^tinymce/', include('tinymce.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:

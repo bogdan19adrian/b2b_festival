@@ -10,10 +10,13 @@ from django.views.decorators.vary import vary_on_headers
 
 from django.views.decorators.cache import cache_control
 
+from dda_blog.models import Post
+
 
 @cache_control(private=True, max_age=3600)
 @vary_on_headers('User-Agent')
 def dance_school(request):
+    queryset = Post.objects.filter(status=1).order_by('-created_on')[0]
     return render(request=request,
                   template_name='dance_school/dance_school.html',
                   context={
@@ -23,6 +26,7 @@ def dance_school(request):
                       "instructor": Instructor.objects.all,
                       "programInterval": ProgramInterval.objects.all,
                       "about": About.objects.last(),
+                      "post": queryset,
                   })
 
 
