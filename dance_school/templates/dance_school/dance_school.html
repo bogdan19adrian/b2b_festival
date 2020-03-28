@@ -93,8 +93,7 @@
 </div>
 {#festivals#}
 
-
-<div id="about" class="section text-center">
+<div id="about" class="bg-1 text-center">
     <div class="container text-center">
         <h3>{{ about.about_title }}</h3>
         <br>
@@ -105,11 +104,11 @@
     </div>
 </div>
 {% if post != None %}
-<div id="about" class="bg-1 text-center">
+<div id="about" class="section text-center">
     <div class="container text-center">
         <h3>LATEST BLOG POST</h3>
         <br>
-
+        <hr>
         <div class="single-recent-blog-post">
             <div class="details mt-20">
                 <a href="{% url 'dda_blog:post_detail' post.slug %}">
@@ -117,12 +116,13 @@
                 </a>
                 <p class="tag-list-inline">Tag: {{ post.category }}</p>
                 <div style="text-align: justify !important;">
-                    <p>{{ post.content|slice:":600" | safe }}</p>
+                    <p>{{ post.content|slice:":1200" | safe }}</p>
                 </div>
                 <a class="button" href="{% url 'dda_blog:post_detail' post.slug %}">Read More <i
                         class="ti-arrow-right"></i></a>
             </div>
         </div>
+        <hr>
         <br>
     </div>
 </div>
