@@ -25,7 +25,7 @@ def dance_school(request):
                       "contact": Contact.objects.last(),
                       "instructor": Instructor.objects.all,
                       "programInterval": ProgramInterval.objects.all,
-                      "about": About.objects.last(),
+                      "about": About.objects.all,
                       "post": queryset,
                   })
 
