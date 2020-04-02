@@ -257,6 +257,19 @@
                                                    placeholder="Last Name" required>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" id="termsModal" type="checkbox"
+                                                       value="" oninput="termsAccepted(event)" >
+                                                <span class="form-check-sign">
+                                             <span class="check"></span>
+                                      </span>
+                                            </label>
+                                        </div>
+                                        <div class="text-center"><p><a href="{% url 'privacy:privacy' %}">Accept Terms &
+                                            Conditions</a></p></div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -270,7 +283,7 @@
                                 <button id="submitBuyTickets" type="submit"
                                         class="btn btn-danger btn-link"
                                         data-toggle="modal"
-                                        data-target="#exampleModal">
+                                        data-target="#exampleModal" disabled>
                                     <span class="form-check-sign"></span>Check Out
                                 </button>
                             </div>
@@ -347,19 +360,21 @@
                             <label>Message</label>
                             <textarea class="form-control" rows="4" id="messageFestMessage"
                                       placeholder="Tell us your thoughts and feelings..."></textarea>
-                             <div class="row">
+                            <div class="row">
                                 <div id="errorMsgFest"></div>
                             </div>
                             <div class="row">
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input class="form-check-input" id="termsFestMessage" type="checkbox" value="">
-                                        Accept Terms & Conditions
+
                                         <span class="form-check-sign">
                                              <span class="check"></span>
                                       </span>
                                     </label>
                                 </div>
+                                <div class="text-center"><p><a href="{% url 'privacy:privacy' %}">Accept Terms &
+                                    Conditions</a></p></div>
                             </div>
                         </form>
                         <div class="row">

@@ -45,6 +45,7 @@ class Ticket(models.Model):
     ticket_lastName = models.CharField(max_length=200)
     ticket_uniqueId = models.CharField(max_length=200)
     ticket_dateOfPurchase = models.DateTimeField('date published')
+    ticket_terms_accepted = models.BooleanField()
 
     def __str__(self):
         return self.ticket_uniqueId

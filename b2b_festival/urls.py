@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("b2b/", include('main.urls')),
     path("blog/", include('dda_blog.urls')),
+    path("privacy/", include('privacy.urls')),
     path(r'^tinymce/', include('tinymce.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()

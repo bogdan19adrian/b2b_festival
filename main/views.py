@@ -10,7 +10,7 @@ from b2b_festival import settings
 from common.common import validate_email
 from main.models import Carousel, ConfirmedArtists, Pricing, Ticket, Program, AboutBullet, About, PaymentOption, \
     ConfirmedPhoto, ConfirmedDJs
-
+import os
 
 def homepage(request):
     return render(request=request,
@@ -47,7 +47,13 @@ def buyTicket(request):
     lastName = request.POST['lastName']
     passType = request.POST['passType']
     paymentOption = request.POST['paymentOption']
+    terms = request.POST['terms']
     code = generateShortUUID()
+
+    if terms == 'true':
+        terms = True
+    else:
+        terms = False
 
     ticket = Ticket.objects.create(
         ticket_priceInRon=priceRon,
@@ -56,6 +62,7 @@ def buyTicket(request):
         ticket_firstName=firstName,
         ticket_lastName=lastName,
         ticket_uniqueId=code,
+        ticket_terms_accepted=terms,
         ticket_dateOfPurchase=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     )
 

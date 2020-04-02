@@ -91,6 +91,7 @@
         <a class="up-arrow" href="#b2bhome" data-toggle="tooltip" title="TO TOP">
             <span class="glyphicon glyphicon-chevron-up"></span>
         </a><br><br>
+            <p><a href="{% url 'privacy:privacy' %}">Privacy Notice</a></p>
     </div>
 </footer>
 <!--   Core JS Files   -->
@@ -181,6 +182,7 @@
     let priceInRon;
     let pass_type;
     let paymentOption;
+    let termsAcceptedEvent;
 
     function seletctPayment(event) {
         var e = document.getElementById("paymentOption");
@@ -203,7 +205,30 @@
         document.getElementById("ModalLabel").innerHTML = "Buying a" + " " + passType;
     }
 
+    function termsAccepted(event) {
+        if ($('#termsModal').is(":checked") === false) {
+            $("#submitBuyTickets").attr("disabled", true);
+        }
+        else {
+            $("#submitBuyTickets").attr("disabled", false);
+        }
+    }
+
     $("#submitBuyTickets").click(function () {
+
+        console.log($('#termsModal').is(":checked"));
+        if ($('#termsModal').is(":checked") === false) {
+            $('#errorMsgFest').prepend(
+                '<br>' +
+                '<div class="alert alert-danger" role="alert">\n' +
+                '  You must agree terms and conditions if you want to prceed' +
+                '</div>');
+            setTimeout(function () {
+                document.getElementById("errorMsgFest").innerHTML = '';
+            }, 7000);
+            return;
+        }
+
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
                 function getCookie(name) {
@@ -244,7 +269,8 @@
             firstName: firstName,
             lastName: lastName,
             passType: pass_type,
-            paymentOption: paymentOption
+            paymentOption: paymentOption,
+            terms: $('#termsModal').is(":checked")
         };
         $.post("{% url 'main:buyTickets' %}", data);
         priceInEuro = null,
@@ -258,6 +284,8 @@
         $("#alertPricePayPal").removeClass("alert alert alert-danger");
         $("#alertPricePayPal").text("");
         document.getElementById("buyTickets").reset();
+        $("#submitBuyTickets").attr("disabled", true);
+        $("#exampleModal").modal("hide");
     });
 
     {#$(document).on('submit', '#contactFestival', function (e) {#}

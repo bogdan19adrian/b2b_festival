@@ -1,15 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.cache import cache_control
+from django.views.decorators.vary import vary_on_headers
 
-# Create your views here.
 from common.MailSenderWrapper import MailSenderWrapper
 from common.common import validate_email
 from dance_school.models import Carousel, DayProgram, Contact, Instructor, ProgramInterval, About
-
-from django.views.decorators.vary import vary_on_headers
-
-from django.views.decorators.cache import cache_control
-
 from dda_blog.models import Post
 
 

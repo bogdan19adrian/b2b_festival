@@ -269,13 +269,15 @@
                         <div class="form-check">
                             <label class="form-check-label">
                                 <input class="form-check-input" id="termsSchoolMessage" type="checkbox" value="">
-                                Accept Terms & Conditions
                                 <span class="form-check-sign">
                                              <span class="check"></span>
                                       </span>
                             </label>
                         </div>
+                        <div class="text-center"><p><a href="{% url 'privacy:privacy' %}">Accept Terms & Conditions</a></p></div>
                     </div>
+                </div>
+            </div>
         </form>
         <div class="row">
             <div class="col-md-12 form-group">
@@ -293,6 +295,7 @@
     </a><br><br>
     <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" data-toggle="tooltip" title="Visit w3schools">www.w3schools.com</a>
     </p>
+    <p><a href="{% url 'privacy:privacy' %}">Privacy Notice</a></p>
 </footer>
 
 <script>

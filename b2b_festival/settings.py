@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'dance_school.apps.DanceSchoolConfig',
     'dda_blog.apps.DdaBlogConfig',
+    'privacy.apps.PrivacyConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
